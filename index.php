@@ -1,7 +1,12 @@
 <?php 
 
-require_once('modele.php');
+require_once('Modele.php');
 
-$posts = getPosts();
-
-require_once('vueAccueil.php');
+try {
+    $posts = getPosts();
+    require_once('vueAccueil.php');
+}
+catch (Exception $e) {
+    $msgErreur = $e->getMessage();
+    require_once('vueErreur.php');
+}

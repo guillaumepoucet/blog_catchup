@@ -1,4 +1,3 @@
-<!-- Header -->
 <header id="header">
     <!-- Nav -->
     <div id="nav">
@@ -99,4 +98,3 @@
     </div>
     <!-- /Nav -->
 </header>
-<!-- /Header -->

@@ -18,7 +18,7 @@
 			<div class="post-body">
 				<div class="post-meta">
 					<a class="post-category cat-1" href="category.php">Web Design</a>
-					<span class="post-date"><?= $post['post_date'] ?></span>
+					<span class="post-date"><?= strftime('%d %b. %Y', strtotime($post['post_date'])) ?></span>
 				</div>
 				<h3 class="post-title"><a href="<?= 'index.php?action=post&id=' . $post['post_id'] ?>"><?= $post['post_title'] ?></a>
 				</h3>

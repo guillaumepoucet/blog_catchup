@@ -13,8 +13,8 @@
 	<?php foreach($posts as $post): ?>
 	<div class="col-md-6">
 		<div class="post">
-			<a class="post-img" href="<?= 'index.php?action=post&id=' . $post['post_id'] ?>">
-			<img src="./contenu/img/post-3.jpg" alt=""></a>
+			<a class="post-img main" href="<?= 'index.php?action=post&id=' . $post['post_id'] ?>">
+			<img src="<?= $post['post_cover_url'] ?>" alt=""></a>
 			<div class="post-body">
 				<div class="post-meta">
 					<a class="post-category cat-1" href="category.php">Web Design</a>

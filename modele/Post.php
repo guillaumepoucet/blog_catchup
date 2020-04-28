@@ -15,7 +15,19 @@ class Post extends Modele {
     // renvoie les informations d'un billet par son id   
     public function getPost($post_id) {
         
-        $sql = 'SELECT * FROM t_posts WHERE post_id = ?';
+        $sql = 'SELECT 
+                P.*,
+                I.post_img_url,
+                U.user_lastname,
+                U.user_firstname,
+                U.user_description,
+                U.user_photo_url
+                FROM t_posts P
+                LEFT JOIN t_post_img AS I
+                    ON I.post_id = P.post_id
+                LEFT JOIN t_users AS U
+                    ON U.user_id = P.user_id
+                WHERE P.post_id = ?';
         $post = $this->executeRequest($sql, array($post_id));
     
         if ($post->rowCount() == 1) {

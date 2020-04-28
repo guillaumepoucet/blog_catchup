@@ -5,7 +5,7 @@
 <!-- Blog post -->
 <!-- Page Header -->
 <div id="post-header" class="page-header">
-	<div class="background-img" style="background-image: url('./img/post-page.jpg');"></div>
+	<div class="background-img" style="background-image: url('<?= $post['post_cover_url'] ?>')"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
@@ -55,15 +55,13 @@
 					<div class="post-author">
 						<div class="media">
 							<div class="media-left">
-								<img class="media-object" src="./img/author.png" alt="">
+								<img class="media-object" src="<?= $post['user_photo_url'] ?>" alt="">
 							</div>
 							<div class="media-body">
 								<div class="media-heading">
-									<h3>John Doe</h3>
+									<h3><?= $post['user_firstname'] . " " . $post['user_lastname'] ?></h3>
 								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-									nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								<p><?= $post['user_description'] ?>
 								</p>
 								<ul class="author-social">
 									<li><a href="#"><i class="fa fa-facebook"></i></a></li>

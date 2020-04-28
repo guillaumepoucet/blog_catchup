@@ -1,4 +1,4 @@
-<?php $titre = 'Catch-up Blog ' . $post['post_titre'] ?>
+<?php $titre = 'Catch-up Blog - ' . $post['post_title'] ?>
 
 <?php ob_start() ?>
 
@@ -102,7 +102,7 @@
 								</p>
 							</div>
 						</div>
-						<?endwhile ?>
+						<?php endwhile ?>
 						<!-- /comment -->
 					</div>
 				

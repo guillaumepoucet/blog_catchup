@@ -43,15 +43,10 @@
 			<!-- row -->
 			<div class="row">
 				<div class="col-md-8">
-					<div class="section-title">
-						<h2>Articles récents</h2>
-					</div>
-					<!-- row -->
-					<div class="row">
-						<!-- recent blog posts -->
-						<?= $content ?>
-						<!-- /recent blog posts -->
-					</div>
+
+					<?= $content ?>
+					<!-- /recent blog posts -->
+
 				</div>
 
 				<!-- aside -->
@@ -59,7 +54,7 @@
 					<!-- most read posts -->
 					<?php include('most_read.php') ?>
 					<!-- /most read posts -->
-					
+
 					<!-- ad -->
 					<?php include('ad.php')?>
 					<!-- /ad -->

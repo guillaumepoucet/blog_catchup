@@ -33,7 +33,10 @@ function getComments($post_id) {
     $connexion = new Database('localhost', 'catchup', 'root', '');
     $bdd = $connexion->PDOConnexion();    
 
-    $comments = $bdd->prepare('SELECT * FROM t_comments WHERE post_id = ?');
+    $comments = $bdd->prepare(' SELECT C.*, U.user_lastname, U.user_firstname
+                                FROM t_comments C
+                                LEFT JOIN t_users U ON C.user_id = U.user_id
+                                WHERE post_id = ?');
     $comments->execute(array($post_id));
 
     return $comments;

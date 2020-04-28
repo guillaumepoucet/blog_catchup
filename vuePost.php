@@ -85,20 +85,18 @@
 
 					<div class="post-comments">
 						<!-- comment -->
-						<?php while($comment -> $comments): ?>
+						<?php while($comment = $comments->fetch()): ?>
 						<div class="media">
 							<div class="media-left">
 								<img class="media-object" src="./img/avatar.png" alt="">
 							</div>
 							<div class="media-body">
 								<div class="media-heading">
-									<h4>John Doe</h4>
-									<span class="time">March 27, 2018 at 8:00 am</span>
+									<h4><?= $comment['user_firstname'] . " " . $comment['user_lastname'] ?></h4>
+									<span class="time"><?= $comment['comment_date'] ?></span>
 									<a href="#" class="reply">Reply</a>
 								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-									nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								<p><?= $comment['comment_content'] ?>
 								</p>
 							</div>
 						</div>

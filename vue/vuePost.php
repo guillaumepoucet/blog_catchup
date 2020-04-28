@@ -86,12 +86,12 @@
 						<?php foreach($comments as $comment): ?>
 						<div class="media">
 							<div class="media-left">
-								<img class="media-object" src="./img/avatar.png" alt="">
+								<img class="media-object" src="<?= $comment['user_photo_url'] ?>" alt="">
 							</div>
 							<div class="media-body">
 								<div class="media-heading">
 									<h4><?= $comment['user_firstname'] . " " . $comment['user_lastname'] ?></h4>
-									<span class="time"><?= $comment['comment_date'] ?></span>
+									<span class="time"><?= strftime('%d %b. %Y, %R', strtotime($comment['comment_date'])) ?></span>
 									<a href="#" class="reply">Reply</a>
 								</div>
 								<p><?= $comment['comment_content'] ?>

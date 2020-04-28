@@ -23,9 +23,9 @@ class Post extends Modele {
                 U.user_description,
                 U.user_photo_url
                 FROM t_posts P
-                LEFT JOIN t_post_img AS I
+                LEFT JOIN t_post_img I
                     ON I.post_id = P.post_id
-                LEFT JOIN t_users AS U
+                LEFT JOIN t_users U
                     ON U.user_id = P.user_id
                 WHERE P.post_id = ?';
         $post = $this->executeRequest($sql, array($post_id));

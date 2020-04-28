@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <div class="post post-row">
-        <a class="post-img" href="blog-post.php"><img src="./img/post-4.jpg" alt=""></a>
+        <a class="post-img" href="blog-post.php"><img src="./contenu/img/post-4.jpg" alt=""></a>
         <div class="post-body">
             <div class="post-meta">
                 <a class="post-category cat-2" href="category.php">JavaScript</a>
@@ -19,7 +19,7 @@
 <!-- post -->
 <div class="col-md-12">
     <div class="post post-row">
-        <a class="post-img" href="blog-post.php"><img src="./img/post-6.jpg" alt=""></a>
+        <a class="post-img" href="blog-post.php"><img src="./contenu/img/post-6.jpg" alt=""></a>
         <div class="post-body">
             <div class="post-meta">
                 <a class="post-category cat-2" href="category.php">JavaScript</a>
@@ -38,7 +38,7 @@
 <!-- post -->
 <div class="col-md-12">
     <div class="post post-row">
-        <a class="post-img" href="blog-post.php"><img src="./img/post-1.jpg" alt=""></a>
+        <a class="post-img" href="blog-post.php"><img src="./contenu/img/post-1.jpg" alt=""></a>
         <div class="post-body">
             <div class="post-meta">
                 <a class="post-category cat-4" href="category.php">Css</a>
@@ -56,7 +56,7 @@
 <!-- post -->
 <div class="col-md-12">
     <div class="post post-row">
-        <a class="post-img" href="blog-post.php"><img src="./img/post-2.jpg" alt=""></a>
+        <a class="post-img" href="blog-post.php"><img src="./contenu/img/post-2.jpg" alt=""></a>
         <div class="post-body">
             <div class="post-meta">
                 <a class="post-category cat-3" href="category.php">Jquery</a>

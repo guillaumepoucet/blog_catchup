@@ -1,12 +1,27 @@
 <?php 
 
-require_once('Modele.php');
+require_once('controleur/Controleur.php');
 
 try {
-    $posts = getPosts();
-    require_once('vueAccueil.php');
-}
-catch (Exception $e) {
-    $msgErreur = $e->getMessage();
-    require_once('vueErreur.php');
-}
+    if (isset($_GET['action'])) {
+      if ($_GET['action'] == 'post') {
+        if (isset($_GET['id'])) {
+          $post_id = intval($_GET['id']);
+          if ($post_id != 0)
+            billet($post_id);
+          else
+            throw new Exception("Identifiant de billet non valide");
+        }
+        else
+          throw new Exception("Identifiant de billet non défini");
+      }
+      else
+        throw new Exception("Action non valide");
+    }
+    else {
+      accueil();  // action par défaut
+    }
+  }
+  catch (Exception $e) {
+      erreur($e->getMessage());
+  }

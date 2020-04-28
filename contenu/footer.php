@@ -7,7 +7,7 @@
             <div class="col-md-5">
                 <div class="footer-widget">
                     <div class="footer-logo">
-                        <a href="index.php" class="logo"><img src="./img/logo.png" alt=""></a>
+                        <a href="index.php" class="logo"><img src="./contenu/img/logo.png" alt=""></a>
                     </div>
                     <ul class="footer-nav">
                         <li><a href="#">Privacy Policy</a></li>

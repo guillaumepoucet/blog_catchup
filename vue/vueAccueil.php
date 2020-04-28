@@ -9,8 +9,8 @@
 <!-- row -->
 <div class="row">
 	<!-- recent blog posts -->
-
-	<?php while($post = $posts->fetch()): ?>
+	
+	<?php foreach($posts as $post): ?>
 	<div class="col-md-6">
 		<div class="post">
 			<a class="post-img" href="<?= 'index.php?action=post&id=' . $post['post_id'] ?>">
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 	</div>
-	<?php endwhile ?>
+	<?php endforeach ?>
 </div>
 <!-- /post -->
 

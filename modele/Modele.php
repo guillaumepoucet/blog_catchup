@@ -1,43 +1,21 @@
 <?php
 
-require_once('class/Database.php');
+require_once('Database.php');
 
-//récupére tous les articles
-function getPosts() {
-    
-    $connexion = new Database('localhost', 'catchup', 'root', '');
-    $bdd = $connexion->PDOConnexion();    
+abstract class Modele {
 
-    $posts = $bdd->prepare('SELECT * FROM t_posts');
-    $posts ->execute();
+    protected function executeRequest($sql, $params = null) {
 
-    return $posts;
-};
+        $bdd = new Database('localhost', 'catchup', 'root', '');
+        $bdd = $bdd->PDOConnexion();  
 
-// renvoie les informations d'un billet par son id
-function getPost($post_id) {
-    $connexion = new Database('localhost', 'catchup', 'root', '');
-    $bdd = $connexion->PDOConnexion();    
-
-    $post = $bdd->prepare('SELECT * FROM t_posts WHERE post_id = ?');
-    $post->execute(array($post_id));
-
-    if ($post->rowCount() == 1) {
-        return $post->fetch();
-    } else {
-        throw new Exception("Aucun article ne correspond à l'identifiant '$post_id'");
+        if ($params == null) {
+            $result = $bdd->prepare($sql);
+            $result->execute();
+            return $result;
+        } else {
+            $result = $bdd->prepare($sql);
+            $result ->execute($params);
+        }
     }
-}
-
-function getComments($post_id) {
-    $connexion = new Database('localhost', 'catchup', 'root', '');
-    $bdd = $connexion->PDOConnexion();    
-
-    $comments = $bdd->prepare(' SELECT C.*, U.user_lastname, U.user_firstname
-                                FROM t_comments C
-                                LEFT JOIN t_users U ON C.user_id = U.user_id
-                                WHERE post_id = ?');
-    $comments->execute(array($post_id));
-
-    return $comments;
 }

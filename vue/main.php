@@ -33,7 +33,7 @@
 <body>
 
 	<!-- Header -->
-	<?php include('header.php') ?>
+	<?php include('contenu/header.php') ?>
 	<!-- /Header -->
 
 	<!-- section -->
@@ -52,12 +52,15 @@
 				<!-- aside -->
 				<div class="col-md-4">
 					<!-- most read posts -->
-					<?php include('most_read.php') ?>
+					<?php include('contenu/most_read.php') ?>
 					<!-- /most read posts -->
 
 					<!-- ad -->
-					<?php include('ad.php')?>
+					<?php include('contenu/ad.php')?>
 					<!-- /ad -->
+					<?php if(isset($_GET['action']) && $_GET['action'] == 'post'): ?>
+					<?php include ('contenu/featured_posts_list.php')?>
+					<?php endif ?>
 				</div>
 				<!-- /aside -->
 			</div>
@@ -80,7 +83,7 @@
 				</div>
 
 				<!-- featured posts -->
-				<?php include('featured_posts.php') ?>
+				<?php include('contenu/featured_posts.php') ?>
 				<!-- /feqtured posts -->
 			</div>
 			<!-- /row -->
@@ -103,7 +106,7 @@
 							</div>
 						</div>
 						<!-- most read list -->
-						<?php include('most_read_list.php') ?>
+						<?php include('contenu/most_read_list.php') ?>
 						<!-- /most read list -->
 
 						<div class="col-md-12">
@@ -116,11 +119,11 @@
 
 				<div class="col-md-4">
 					<!-- ad -->
-					<?php include('ad.php') ?>
+					<?php include('contenu/ad.php') ?>
 					<!-- /ad -->
 
 					<!-- catagories & tags -->
-					<?php include('categories.php') ?>
+					<?php include('contenu/categories.php') ?>
 					<!-- /catagories & tags -->
 
 				</div>
@@ -132,7 +135,7 @@
 	<!-- /section -->
 
 	<!-- Footer -->
-	<?php include('footer.php') ?>
+	<?php include('contenu/footer.php') ?>
 	<!-- /Footer -->
 
 	<!-- jQuery Plugins -->

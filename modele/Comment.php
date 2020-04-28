@@ -12,7 +12,7 @@ class Comment extends Modele {
                 WHERE post_id = ?';
         $comments = $this->executeRequest($sql, array($post_id));
     
-        return $comments;
+        return $comments->fetchAll();
     }
 
 }

@@ -2,6 +2,7 @@
 
 require 'modele/Modele.php';
 require 'modele/Post.php';
+require 'modele/Comment.php';
 
 // Affiche la liste de tous les billets du blog
 function accueil() {

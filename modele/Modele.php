@@ -16,6 +16,7 @@ abstract class Modele {
         } else {
             $result = $bdd->prepare($sql);
             $result ->execute($params);
+            return $result;
         }
     }
 }

@@ -85,7 +85,7 @@
 
 					<div class="post-comments">
 						<!-- comment -->
-						<?php while($comment = $comments->fetch()): ?>
+						<?php foreach($comments as $comment): ?>
 						<div class="media">
 							<div class="media-left">
 								<img class="media-object" src="./img/avatar.png" alt="">
@@ -100,7 +100,7 @@
 								</p>
 							</div>
 						</div>
-						<?php endwhile ?>
+						<?php endforeach ?>
 						<!-- /comment -->
 					</div>
 				

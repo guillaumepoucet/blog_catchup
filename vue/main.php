@@ -20,6 +20,7 @@
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="contenu/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="contenu/css/admin.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -142,6 +143,9 @@
 	<script src="contenu/js/jquery.min.js"></script>
 	<script src="contenu/js/bootstrap.min.js"></script>
 	<script src="contenu/js/main.js"></script>
+
+	<!-- Page de connection -->
+	<!-- <script src="contenu/js/admin.js"></script> -->
 
 </body>
 

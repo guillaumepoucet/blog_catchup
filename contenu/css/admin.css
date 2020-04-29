@@ -1,0 +1,14 @@
+.form .register-form {
+    /* display: none; */
+}
+
+.container:before,
+.container:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.login-page button {
+    margin: 5px 0px 10px;
+}

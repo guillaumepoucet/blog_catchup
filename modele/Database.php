@@ -1,6 +1,6 @@
 <?php
 
-class database {
+class Database {
     //nos variables
     protected $_host;
     protected $_dbname;

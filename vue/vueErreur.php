@@ -1,7 +1,5 @@
-<?php $titre = 'Catch-up Blog'; ?>
+<?php $this->title = 'Erreur'; ?>
 
-<?php ob_start() ?>
 <p>Une erreur est survenue : <?= $msgErreur ?></p>
-<?php $content = ob_get_clean(); ?>
 
-<?php require 'main.php'; ?>
+<?php require_once('main.php'); ?>

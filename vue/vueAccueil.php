@@ -1,6 +1,4 @@
-<?php $titre = 'Catch-up Blog' ?>
-
-<?php ob_start() ?>
+<?php $this->title = 'Accueil - Catchup Blog' ?>
 
 <!-- post -->
 <div class="section-title">
@@ -28,7 +26,3 @@
 	<?php endforeach ?>
 </div>
 <!-- /post -->
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('main.php') ?>

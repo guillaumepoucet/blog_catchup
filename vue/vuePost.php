@@ -1,6 +1,4 @@
-<?php $titre = 'Catch-up Blog - ' . $post['post_title'] ?>
-
-<?php ob_start() ?>
+<?php $this->title = $post['post_title'] . ' - Catchup Blog' ?>
 
 <!-- Blog post -->
 <!-- Page Header -->
@@ -149,7 +147,3 @@
 	<!-- /container -->
 </div>
 <!-- /section -->
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('main.php'); ?>

@@ -2,16 +2,15 @@
 
 require_once('Database.php');
 
-abstract class Modele {
+abstract class BDDRequest {
 
-    protected $bdd;
+    protected $_bdd;
 
     protected function getBdd() {
 
         $bdd = new Database('localhost', 'catchup', 'root', '');
         $bdd = $bdd->PDOConnexion();  
         return $bdd;
-
     }
 
     protected function executeRequest($sql, $params = null) {

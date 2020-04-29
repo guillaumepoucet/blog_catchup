@@ -5,7 +5,7 @@ require_once('vue/Vue.php');
 
 class ControleurAccueil {
     
-    private $post;
+    private $_post;
 
     public function __construct() {
         $this->post = new Post;

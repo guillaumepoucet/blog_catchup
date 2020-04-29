@@ -1,8 +1,8 @@
 <?php 
 
-require_once('Modele.php');
+require_once('BDDRequest.php');
 
-class Comment extends Modele {
+class Comment extends BDDRequest {
 
     function getComments($post_id) {
    

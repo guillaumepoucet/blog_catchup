@@ -6,8 +6,8 @@ require_once('vue/Vue.php');
 
 class ControleurPost {
 
-    private $post;
-    private $comment;
+    private $_post;
+    private $_comment;
 
     public function __construct() {
         $this->post = new Post;

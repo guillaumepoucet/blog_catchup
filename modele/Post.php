@@ -1,8 +1,8 @@
 <?php
 
-require_once('Modele.php');
+require_once('BDDRequest.php');
 
-class Post extends Modele {
+class Post extends BDDRequest {
     
     //récupére tous les articles
     public function getPosts() {

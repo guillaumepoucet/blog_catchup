@@ -3,9 +3,9 @@
 class Vue {
 
     // Nom du fichier associé à la vue
-    private $fichier;
+    private $_fichier;
     // Titre de la vue (défini dans le fichier vue)
-    private $title;
+    private $_title;
 
     public function __construct($action) {
         // Détermination du nom du fichier vue à partir de l'action

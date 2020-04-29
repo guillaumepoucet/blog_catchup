@@ -6,8 +6,8 @@ require_once 'vue/Vue.php';
 
 class Routeur {
 
-    private $ctrlAccueil;
-    private $ctrlBillet;
+    private $_ctrlAccueil;
+    private $_ctrlBillet;
 
     public function __construct() {
         $this->ctrlAccueil = new ControleurAccueil();

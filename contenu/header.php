@@ -23,6 +23,7 @@
 
                 <!-- search & aside toggle -->
                 <div class="nav-btns">
+                    <a class="nav-login-btn" href="index.php?action=connection">Se connecter</a>
                     <button class="aside-btn"><i class="fa fa-bars"></i></button>
                     <button class="search-btn"><i class="fa fa-search"></i></button>
                     <div class="search-form">

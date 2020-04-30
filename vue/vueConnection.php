@@ -9,7 +9,7 @@
 
     <div class="login-page col-md-6">
         <div class="form">
-            <form class="register-form" action="index.php?action=login" method="POST">
+            <form class="register-form" method="POST">
                
                     <div class="form-group">
                         <label for="firstname">Prénom</label>
@@ -37,7 +37,7 @@
                 <button type="submit" class="btn btn-primary pb-2">Créer mon compte</button>
                 <p class="message">Vous avez déjà un compte ? <a href="#">Se connecter</a></p>
             </form>
-            <form class="login-form">
+            <form class="login-form" action="index.php?action=login" method="POST">
                 <div class="form-group">
                     <label for="login">Nom d'utilisateur</label>
                     <input type="text" class="form-control" id="login" placeholder="Votre nom d'utilisateur">

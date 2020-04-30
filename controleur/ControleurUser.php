@@ -10,4 +10,9 @@ class ControleurUser {
         $vue->generer(array('connection'));
     }
 
+    public function adminPage() {
+        $vue = new Vue("Admin");
+        $vue->genereradmin(array('admin'));
+    }
+
 }

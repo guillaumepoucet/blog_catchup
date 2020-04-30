@@ -33,6 +33,8 @@ class Routeur {
                     } 
                 } elseif ($_GET['action'] == 'connection') {
                     $this->ctrlUser->loginPage();
+                } elseif ($_GET['action'] == 'admin') {
+                    $this->ctrlUser->adminPage();
                 } else {
                     throw new Exception("Action non valide");
                 } 

@@ -13,7 +13,8 @@ class Comment extends BDDRequest {
                 FROM t_comments C
                 LEFT JOIN t_users U 
                     ON C.user_id = U.user_id
-                WHERE post_id = ?';
+                WHERE post_id = ?
+                ORDER BY C.comment_date DESC';
         $comments = $this->executeRequest($sql, array($post_id));
     
         return $comments->fetchAll();

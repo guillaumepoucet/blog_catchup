@@ -23,6 +23,17 @@ class Vue {
             echo $vue;
         }
 
+    // Génère et affiche la vue admin
+        public function genererAdmin($donnees) {
+            // Génération de la partie spécifique de la vue
+            $content = $this->genererFichier($this->fichier, $donnees);
+            // Génération du gabarit commun utilisant la partie spécifique
+            $vue = $this->genererFichier('admin/main.php',
+                array('title' => $this->title, 'content' => $content));
+            // Renvoi de la vue au navigateur
+            echo $vue;
+        }
+
     // Génère un fichier vue et renvoie le résultat produit
     private function genererFichier($fichier, $donnees) {
         if (file_exists($fichier)) {

@@ -52,83 +52,10 @@
 
 				<!-- aside -->
 				<div class="col-md-4">
-					<!-- most read posts -->
-					<?php include('contenu/most_read.php') ?>
-					<!-- /most read posts -->
 
-					<!-- ad -->
-					<?php include('contenu/ad.php')?>
-					<!-- /ad -->
-					<?php if(isset($_GET['action']) && $_GET['action'] == 'post'): ?>
-					<?php include ('contenu/featured_posts_list.php')?>
-					<?php endif ?>
 				</div>
 				<!-- /aside -->
 
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /section -->
-
-	<!-- section -->
-	<div class="section section-grey">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title text-center">
-						<h2>Featured Posts</h2>
-					</div>
-				</div>
-
-				<!-- featured posts -->
-				<?php include('contenu/featured_posts.php') ?>
-				<!-- /feqtured posts -->
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /section -->
-
-	<!-- section -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-8">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title">
-								<h2>Most Read</h2>
-							</div>
-						</div>
-						<!-- most read list -->
-						<?php include('contenu/most_read_list.php') ?>
-						<!-- /most read list -->
-
-						<div class="col-md-12">
-							<div class="section-row">
-								<button class="primary-button center-block">Load More</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4">
-					<!-- ad -->
-					<?php include('contenu/ad.php') ?>
-					<!-- /ad -->
-
-					<!-- catagories & tags -->
-					<?php include('contenu/categories.php') ?>
-					<!-- /catagories & tags -->
-
-				</div>
 			</div>
 			<!-- /row -->
 		</div>

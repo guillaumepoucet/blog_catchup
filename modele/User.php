@@ -33,6 +33,32 @@ class User extends BDDRequest {
 
     }
 
+    public function login($login, $pass) {
+
+        $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
+        $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;        
+
+        $sql = 'SELECT * FROM users WHERE user_login = ? AND user_pass = ?';
+        $user = $this->executeRequest($sql, array($login, $pass));
+
+        return $user->fetch();
+
+        $count = $user->rowCount();
+        if($count > 0)
+        {
+            session_start();
+            $_SESSION['login'] = $login;
+            $_SESSION['pass'] = $pass;
+            header("location:index.php?action=admin");
+        }
+        else
+        {
+        //Mauvais identifiant ou mauvais tout cours
+        header("location:index.php");
+        }
+        
+    }
+
     public function getUser($user_id) {
 
         $sql = 'SELECT U.*

@@ -49,6 +49,7 @@ class User extends BDDRequest {
             session_start();
             $_SESSION['login'] = $login;
             $_SESSION['pass'] = $pass;
+            
             header("location:index.php?action=admin");
         }
         else

@@ -32,8 +32,14 @@ class Routeur {
                         throw new Exception("Identifiant de billet non défini");
                     } 
                 } elseif ($_GET['action'] == 'connection') {
+                    //renvoie la page de connection/inscription
                     $this->ctrlUser->loginPage();
+                } elseif ($_GET['action'] == 'login') {
+                    $login = $this->getParametre($_POST, 'login');
+                    $pass = $this->getParametre($_POST, 'pass');
+                    $this->ctrlUser->login($login, $pass);
                 } elseif ($_GET['action'] == 'admin') {
+                    // renvoie la page admin
                     $this->ctrlUser->adminPage();
                 } else {
                     throw new Exception("Action non valide");
@@ -45,11 +51,21 @@ class Routeur {
             $this->erreur($e->getMessage());
         }
     }
+
+    public function getParametre($array, $name) {
+        if (isset($array['name'])) {
+            return $array['name'];
+        } else {
+            throw new Exception("Paramère '$name' absent");
+        }
+    }
         
     // Affiche une erreur
     private function erreur($msgErreur) {
         $vue = new Vue("Erreur");
         $vue->generer(array('msgErreur' => $msgErreur));
-    }  
+    } 
+    
+    
     
 }

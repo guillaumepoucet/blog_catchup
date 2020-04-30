@@ -15,7 +15,6 @@ abstract class BDDRequest {
 
     protected function executeRequest($sql, $params = null) {
 
-
         if ($params == null) {
             $result = $this->getBdd()->prepare($sql);
             $result->execute();

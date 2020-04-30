@@ -17,14 +17,6 @@ class User extends BDDRequest {
     private $_user_description;
     private $_user_online;
 
-    public function __construct($user_login, $user_pass) {
-
-        $this->_user_login = $user_login;
-        $this->_user_pass = $user_pass;
-        $this->_user_online = 1;
-
-    }
-
     public function getUsers() {
 
         $sql = 'SELECT * FROM t_users';
@@ -33,17 +25,15 @@ class User extends BDDRequest {
 
     }
 
-    public function login($login, $pass) {
+    public function login() {
 
         $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
         $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;        
+        var_dump($login);
+        $sql = 'SELECT * FROM t_users WHERE user_login = ? AND user_pass = ?';
+        $connectUser = $this->executeRequest($sql, array($login, $pass));
 
-        $sql = 'SELECT * FROM users WHERE user_login = ? AND user_pass = ?';
-        $user = $this->executeRequest($sql, array($login, $pass));
-
-        return $user->fetch();
-
-        $count = $user->rowCount();
+        $count = $connectUser->rowCount();
         if($count > 0)
         {
             session_start();

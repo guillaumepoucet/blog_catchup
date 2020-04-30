@@ -5,6 +5,8 @@ require_once('vue/vue.php');
 
 class ControleurUser {
 
+    private $user;
+
     public function loginPage() { 
         $vue = new Vue("Connection");
         $vue->generer(array('connection'));
@@ -13,6 +15,12 @@ class ControleurUser {
     public function adminPage() {
         $vue = new Vue("Admin");
         $vue->genereradmin(array('admin'));
+    }
+
+    public function login($login, $pass) {
+        $user = new User;
+        $user->login($login, $pass);
+
     }
 
 }

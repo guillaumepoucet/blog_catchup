@@ -13,15 +13,35 @@
     margin: 5px 0px 10px;
 }
 
-#admin .media {
+.admin-aside {
+    border-right: 1px solid #0000001c;
+}
+
+.admin-aside > div {
+    margin-bottom: 1.5em;
+}
+
+.admin-aside a {
+    display: block;
+    margin-left: 1em;
+    font-weight: 500;
+}
+
+#admin-header {
     display: flex;
+    align-items: center;
 }
 
 #admin .media h2 {
     align-self: center;
 }
 
-#admin .media img {
+.admin-photo img {
     border-radius: 50%;
-    margin: 0em 1em 1em 0em;
+    margin: 0em auto 2em;
+}
+
+#admin-header h2,
+.content {
+    margin-left: 1em;
 }

@@ -43,18 +43,48 @@
 	<div class="section">
 		<!-- container -->
 		<div class="container">
+
+			<!-- row -->
+			<div id="admin-header" class="row">
+				<div class="col-md-3 admin-photo">
+					<img class="media-object" src="<?= $_SESSION['photo'] ?>" alt="">
+				</div>
+				<div class="col-md-9">
+					<h2>Bonjour <?= $_SESSION['firstname'] ?>,</h2>
+				</div>
+			</div>
+			<!-- /row -->
+
 			<!-- row -->
 			<div class="row">
-
 				<!-- aside -->
-					<div class="col-md-3">
-						<h3>Menu</h3>
+				<div class="col-md-3 admin-aside">
+					<div>
+						<h4>Gérer mon profil</h4>
+						<a href="">Modifier mes informations</a>
+						<a href="">Changer ma photo de profil</a>
+						<a href="">Supprimer mon profil</a>
 					</div>
-					<!-- /aside -->	
 
-				<div class="col-md-9">
-				
-				<?= $content ?>
+					<?php if($_SESSION['type'] == 1): ?>
+					<div>
+						<h4>Gérer les articles</h4>
+						<a href="">Rédiger un article</a>
+					</div>
+					<div>
+						<h4>Gérer les utilisateurs</h4>
+						<a href="">Liste des utilisateur</a>
+						<a href="">Modifier un utilisateur</a>
+						<a href="">Supprimer un utilisateur</a>
+					</div>
+					<?php endif ?>
+
+				</div>
+				<!-- /aside -->
+
+				<div class="col-md-8 content">
+
+					<?= $content ?>
 					<!-- /recent blog posts -->
 
 				</div>

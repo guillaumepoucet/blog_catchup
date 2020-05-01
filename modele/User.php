@@ -41,7 +41,7 @@ class User extends BDDRequest {
             $_SESSION['firstname'] = $user['user_firstname'];
             $_SESSION['lastname'] = $user['user_lastname'];
             $_SESSION['photo'] = $user['user_photo_url'];
-            $_SESSION['type'] = $user['user_typeid'];
+            $_SESSION['type'] = $user['usertype_id'];
             
             header("location:index.php?action=admin");
         }

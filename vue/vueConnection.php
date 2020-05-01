@@ -40,7 +40,7 @@
             
             </form>
 
-            <form class="login-form" action="traitement.php" method="POST">
+            <form class="login-form" action="index.php?action=login" method="POST">
 
                 <div class="form-group">
                     <label for="login">Nom d'utilisateur</label>

@@ -25,11 +25,8 @@ class User extends BDDRequest {
 
     }
 
-    public function login() {
+    public function login($login, $pass) {
 
-        $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
-        $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;        
-        var_dump($login);
         $sql = 'SELECT * FROM t_users WHERE user_login = ? AND user_pass = ?';
         $connectUser = $this->executeRequest($sql, array($login, $pass));
 
@@ -37,30 +34,32 @@ class User extends BDDRequest {
         if($count > 0)
         {
             session_start();
+            $user = $this->getUser($login);
             $_SESSION['login'] = $login;
             $_SESSION['pass'] = $pass;
+            $_SESSION['firstname'] = $user['user_firstname'];
             
             header("location:index.php?action=admin");
         }
         else
         {
         //Mauvais identifiant ou mauvais tout cours
-        header("location:index.php");
+        header("location:index.php?action=admin&id=err");
         }
         
     }
 
-    public function getUser($user_id) {
+    public function getUser($login) {
 
         $sql = 'SELECT U.*
                 FROM t_users U
-                WHERE U.user_id = ?';
-        $user = $this->executeRequest($sql, array($user_id));
+                WHERE U.user_login = ?';
+        $user = $this->executeRequest($sql, array($login));
 
         if ($user->rowCount() == 1) {
             return $user->fetch();
         } else {
-            throw new exception("Aucun utilisateur ne correspond à l'identifiant '$user_id'");
+            throw new exception("Aucun utilisateur ne correspond au nom d'utilisateur '$login'");
         }
     }
 

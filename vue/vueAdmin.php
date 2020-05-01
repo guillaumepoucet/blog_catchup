@@ -1,3 +1,4 @@
 <?php $this->title = 'Espace membre - Catchup Blog' ?>
 
-<h2>Vous êtes connecté :)</h2>
+
+<h2>Bonjour <?= $_SESSION['firstname'] ?>,</h2>

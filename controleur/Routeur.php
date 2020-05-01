@@ -35,10 +35,21 @@ class Routeur {
                     //renvoie la page de connection/inscription
                     $this->ctrlUser->loginPage();
                 } elseif ($_GET['action'] == 'login') {
-                    $login = $this->getParametre($_POST, 'login');
-                    $pass = $this->getParametre($_POST, 'pass');
+                    // var_dump($_POST['login']); exit;
+                    // $login = $this->getParametre($_POST, 'login');
+                    // $pass = $this->getParametre($_POST, 'pass');
+                    $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
+                    $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;        
+            
                     $this->ctrlUser->login($login, $pass);
                 } elseif ($_GET['action'] == 'admin') {
+                    if (isset($_GET['id'])) {
+                        if ($_GET['id'] == 'err') {
+                            throw new Exception(("Erreur de connection"));
+                        } elseif ($_GET['id'] == 'aff') {
+                            throw new Exception(("Erreur d'affichage'"));
+                        }
+                    }
                     // renvoie la page admin
                     $this->ctrlUser->adminPage();
                 } else {
@@ -52,13 +63,13 @@ class Routeur {
         }
     }
 
-    public function getParametre($array, $name) {
-        if (isset($array['name'])) {
-            return $array['name'];
-        } else {
-            throw new Exception("Paramère '$name' absent");
-        }
-    }
+    // public function getParametre($array, $name) {
+    //     if (isset($array['name'])) {
+    //         return $array['name'];
+    //     } else {
+    //         throw new Exception("Paramètre '$name' absent");
+    //     }
+    // }
         
     // Affiche une erreur
     private function erreur($msgErreur) {

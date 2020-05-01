@@ -1,3 +1,5 @@
+<?php if (isset($_SESSION) && (isset($_SESSION['firstname']))): ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -43,18 +45,19 @@
 		<div class="container">
 			<!-- row -->
 			<div class="row">
-				<div class="col-md-8">
 
+				<!-- aside -->
+					<div class="col-md-3">
+						<h3>Menu</h3>
+					</div>
+					<!-- /aside -->	
+
+				<div class="col-md-9">
+				
 				<?= $content ?>
 					<!-- /recent blog posts -->
 
 				</div>
-
-				<!-- aside -->
-				<div class="col-md-4">
-
-				</div>
-				<!-- /aside -->
 
 			</div>
 			<!-- /row -->
@@ -78,3 +81,6 @@
 </body>
 
 </html>
+<?php else: ?>
+<?php header('location:index.php?action=admin&id=aff') ?>
+<?php endif ?>

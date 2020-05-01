@@ -55,7 +55,6 @@ class Routeur {
                         }
                     }
                     // renvoie la page admin
-                    var_dump($strpos); exit();
                     $this->ctrlUser->adminPage();
                 } elseif ($_GET['action'] == 'deconnection') {
                     $this->ctrlUser->logout();

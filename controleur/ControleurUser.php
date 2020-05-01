@@ -42,4 +42,8 @@ class ControleurUser {
         $vue->genererAdmin(array('users' => $users, 'usertypes' => $usertypes));
     }
 
+    public function deleteUser($user_id) {
+        $delete = $this->user->deleteUser($user_id);
+        $this->afficherListeUsers();
+    } 
 }

@@ -49,9 +49,13 @@ class Routeur {
                             throw new Exception(("Action non autorisée'"));
                         } elseif ($_GET['id'] == 'userlist') {
                             $this->ctrlUser->afficherListeUsers();
+                        } elseif (strpbrk($_GET['id'], 'deleteUser')) {
+                            $user_id = str_replace('deleteUser', "", $_GET['id']);
+                            $this->ctrlUser->deleteUser($user_id);
                         }
                     }
                     // renvoie la page admin
+                    var_dump($strpos); exit();
                     $this->ctrlUser->adminPage();
                 } elseif ($_GET['action'] == 'deconnection') {
                     $this->ctrlUser->logout();

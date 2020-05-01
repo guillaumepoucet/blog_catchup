@@ -103,4 +103,11 @@ class User extends BDDRequest {
         
     }
 
+    public function deleteUser($user_id) {
+
+        $sql = 'DELETE FROM t_users WHERE user_id = ?';
+        return $delUser = $this->executeRequest($sql, array($user_id));
+
+    }
+
 }

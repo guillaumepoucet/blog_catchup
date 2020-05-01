@@ -4,12 +4,14 @@
 <?php $i=1 ?>
 
 <div class="row">
+    <?php if(isset($_GET['id']) && (strpbrk($_GET['id'], 'deleteUser'))): ?>
     <div class="col-md-12 alert alert-danger alert-dismissible show" role="alert">
         <strong>Utilisateur supprimé.</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+    <?php endif ?>
     <div class="col-md-12 alert alert-warning" role="alert">
         <p>Pour afficher les détails d'un utilisateur, veuillez le sélectionner.</p>
     </div>
@@ -32,24 +34,25 @@
             <?php foreach($users as $user): ?>
             <tr>
                 <th scope="row"><?php echo $i; $i++ ?></th>
-                <form action="index.php?action=admin&id=deleteUser<?=$user['user_id']?>" method="POST">
+                <form " method=" POST">
                     <td><?= $user['user_firstname']?></td>
                     <td><?= $user['user_lastname']?></td>
                     <td><?= $user['user_login']?></td>
                     <td><?= $user['user_mail']?></td>
-                    <td><button type="submit" class="type-badge delete-bg">Supprimer</button></td>
                 </form>
-                    <td>
-                        <form id="usertype" action="" method="POST">
-                            <select name="usertype" id="usertype" form="usertype">
-                                <option value="<?= $user['usertype_name']?>"><?= $user['usertype_name']?></option>
-                                <?php foreach($usertypes as $usertype): ?>
-                                <option value="<?= $usertype['usertype_name']?>"><?= $usertype['usertype_name']?></option>
-                                <?php endforeach ?>
-                            </select>
-                            <button class="type-badge">Modifier</button>
-                        </form>
-                    </td>
+                <td>
+                    <form id="usertype" action="" method="POST">
+                        <select name="usertype" id="usertype" form="usertype">
+                            <option value="<?= $user['usertype_name']?>"><?= $user['usertype_name']?></option>
+                            <?php foreach($usertypes as $usertype): ?>
+                            <option value="<?= $usertype['usertype_name']?>"><?= $usertype['usertype_name']?></option>
+                            <?php endforeach ?>
+                        </select>
+                        <button class="type-badge">Modifier</button>
+                    </form>
+                </td>
+                <td><center><a href="index.php?action=admin&id=deleteUser<?=$user['user_id']?>"
+                        class="type-badge delete-bg">Supprimer</a></center></td>
             </tr>
             <?php endforeach ?>
         </tbody>

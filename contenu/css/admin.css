@@ -19,6 +19,7 @@
 
 .admin-aside > div {
     margin-bottom: 1.5em;
+    padding-left: 1em;
 }
 
 .admin-aside a {
@@ -44,4 +45,9 @@
 #admin-header h2,
 .content {
     margin-left: 1em;
+}
+
+.thead-dark {
+    background-color: #a7b3c6;
+
 }

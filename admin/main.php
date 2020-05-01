@@ -42,11 +42,11 @@
 	<!-- section -->
 	<div class="section">
 		<!-- container -->
-		<div class="container">
+		<div class="container-fluid">
 
 			<!-- row -->
 			<div id="admin-header" class="row">
-				<div class="col-md-3 admin-photo">
+				<div class="col-md-2 admin-photo">
 					<img class="media-object" src="<?= $_SESSION['photo'] ?>" alt="">
 				</div>
 				<div class="col-md-9">
@@ -73,7 +73,7 @@
 					</div>
 					<div>
 						<h4>Gérer les utilisateurs</h4>
-						<a href="index.php?action=admin&id=listUser">Liste des utilisateur</a>
+						<a href="index.php?action=admin&id=userlist">Liste des utilisateur</a>
 						<a href="">Modifier un utilisateur</a>
 						<a href="">Supprimer un utilisateur</a>
 					</div>

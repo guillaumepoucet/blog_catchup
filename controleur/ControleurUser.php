@@ -17,18 +17,20 @@ class ControleurUser {
         $vue = new Vue("Connection");
         $vue->generer(array('connection'));
     }
+    
+    public function login($login, $pass) {
+        $user = $this->user->login($login, $pass);
+        if (!empty($user)) {
+            $this->adminPage();
+        } else {
+            //Mauvais identifiant ou mauvais tout cours
+            header("location:index.php?action=admin&id=err");
+        }
+    }
 
     public function adminPage() {
         $vue = new Vue("Admin");
         $vue->genereradmin(array('admin'));
-    }
-
-    public function login($login, $pass) {
-        $user = $this->user->login($login, $pass);
-        if (!empty($user)) {
-            $vue = new Vue("Admin");
-            $vue->genereradmin(array('admin'));
-        }
     }
 
     public function logout() {

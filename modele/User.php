@@ -18,7 +18,10 @@ class User extends BDDRequest {
 
     public function getUsers() {
 
-        $sql = 'SELECT * FROM t_users';
+        $sql = 'SELECT  U.*,
+                        T.usertype_name
+                FROM t_users U
+                LEFT JOIN t_usertype AS T ON T.usertype_id = U.usertype_id';
         $users = $this->executeRequest($sql);
         return $users->fetchAll();
 
@@ -42,14 +45,8 @@ class User extends BDDRequest {
             $_SESSION['lastname'] = $user['user_lastname'];
             $_SESSION['photo'] = $user['user_photo_url'];
             $_SESSION['type'] = $user['usertype_id'];
-            
             return $user;
-        } else
-        {
-        //Mauvais identifiant ou mauvais tout cours
-        header("location:index.php?action=admin&id=err");
         }
-        
     }
 
     public function getUser($login) {

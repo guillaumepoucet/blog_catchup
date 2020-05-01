@@ -45,15 +45,15 @@ class Routeur {
                 } elseif ($_GET['action'] == 'admin') {
                     if (isset($_GET['id'])) {
                         if ($_GET['id'] == 'err') {
-                            throw new Exception(("Erreur de connection"));
+                            throw new Exception(("Utilisateur non trouvé"));
                         } elseif ($_GET['id'] == 'aff') {
                             throw new Exception(("Action non autorisée'"));
-                        } elseif ($_GET['id'] == 'Userlist') {
+                        } elseif ($_GET['id'] == 'userlist') {
                             $this->ctrlUser->afficherListeUsers();
                         }
                     }
                     // renvoie la page admin
-                    $this->ctrlUser->login();
+                    $this->ctrlUser->adminPage();
                 } elseif ($_GET['action'] == 'deconnection') {
                     $this->ctrlUser->logout();
                 } else {

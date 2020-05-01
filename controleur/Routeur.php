@@ -48,10 +48,12 @@ class Routeur {
                             throw new Exception(("Erreur de connection"));
                         } elseif ($_GET['id'] == 'aff') {
                             throw new Exception(("Action non autorisée'"));
+                        } elseif ($_GET['id'] == 'Userlist') {
+                            $this->ctrlUser->afficherListeUsers();
                         }
                     }
                     // renvoie la page admin
-                    $this->ctrlUser->adminPage();
+                    $this->ctrlUser->login();
                 } elseif ($_GET['action'] == 'deconnection') {
                     $this->ctrlUser->logout();
                 } else {

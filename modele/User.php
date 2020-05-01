@@ -43,9 +43,8 @@ class User extends BDDRequest {
             $_SESSION['photo'] = $user['user_photo_url'];
             $_SESSION['type'] = $user['usertype_id'];
             
-            header("location:index.php?action=admin");
-        }
-        else
+            return $user;
+        } else
         {
         //Mauvais identifiant ou mauvais tout cours
         header("location:index.php?action=admin&id=err");

@@ -73,7 +73,7 @@
 					</div>
 					<div>
 						<h4>Gérer les utilisateurs</h4>
-						<a href="">Liste des utilisateur</a>
+						<a href="index.php?action=admin&id=listUser">Liste des utilisateur</a>
 						<a href="">Modifier un utilisateur</a>
 						<a href="">Supprimer un utilisateur</a>
 					</div>

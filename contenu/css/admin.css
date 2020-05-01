@@ -12,3 +12,16 @@
 .login-page button {
     margin: 5px 0px 10px;
 }
+
+#admin .media {
+    display: flex;
+}
+
+#admin .media h2 {
+    align-self: center;
+}
+
+#admin .media img {
+    border-radius: 50%;
+    margin: 0em 1em 1em 0em;
+}

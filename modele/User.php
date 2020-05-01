@@ -17,14 +17,18 @@ class User extends BDDRequest {
     private $_user_description;
 
     public function getUsers() {
-
         $sql = 'SELECT  U.*,
                         T.usertype_name
                 FROM t_users U
-                LEFT JOIN t_usertype AS T ON T.usertype_id = U.usertype_id';
+                LEFT JOIN t_usertype T ON T.usertype_id = U.usertype_id';
         $users = $this->executeRequest($sql);
         return $users->fetchAll();
+    }
 
+    public function getUsertype() {
+        $sql = 'SELECT * FROM t_usertype';
+        $usertypes = $this->executeRequest($sql);
+        return $usertypes->fetchAll();
     }
 
     public function login($login, $pass) {

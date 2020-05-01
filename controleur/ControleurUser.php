@@ -40,8 +40,9 @@ class ControleurUser {
 
     public function afficherListeUsers() {
         $users = $this->user->getUsers();
+        $usertypes = $this->user->getUsertype();
         $vue = new Vue("UserList");
-        $vue->genererAdmin(array('users' => $users));
+        $vue->genererAdmin(array('users' => $users, 'usertypes' => $usertypes));
     }
 
 }

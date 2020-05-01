@@ -90,7 +90,10 @@
 								<div class="media-heading">
 									<h4><?= $comment['user_firstname'] . " " . $comment['user_lastname'] ?></h4>
 									<span class="time"><?= strftime('%d %b. %Y, %R', strtotime($comment['comment_date'])) ?></span>
-									<a href="#" class="reply">Reply</a>
+									<a href="#" class="reply">Répondre</a>
+									<?php if($_SESSION['type'] !== 3): ?>
+									<a href="#" class="reply delete">Supprimer</a>
+									<?php endif ?>
 								</div>
 								<p><?= $comment['comment_content'] ?>
 								</p>

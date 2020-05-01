@@ -1,5 +1,5 @@
 <?php 
-	if (!empty($_SESSION)) {
+	if (empty($_SESSION)) {
 		session_start(); 
 	}
 ?>

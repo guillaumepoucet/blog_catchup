@@ -919,12 +919,21 @@ textarea.input {
     color: #a7b3c6;
     -webkit-transition: 0.2s color;
     transition: 0.2s color;
+    margin-right: 0.2em;
+}
+.post-comments .media .media-body .media-heading .reply.delete {
+    color: #f48f8f;
 }
 
 .post-comments .media .media-body .media-heading .reply:hover,
 .post-comments .media .media-body .media-heading .reply:focus {
     color: #212631;
     text-decoration: none;
+}
+
+.post-comments .media .media-body .media-heading .delete:hover,
+.post-comments .media .media-body .media-heading .delete:focus {
+    color: #ff3838;
 }
 
 /*=========================================================

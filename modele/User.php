@@ -15,7 +15,6 @@ class User extends BDDRequest {
     private $_user_photo_url;
     private $_usertype_id;
     private $_user_description;
-    private $_user_online;
 
     public function getUsers() {
 
@@ -27,17 +26,22 @@ class User extends BDDRequest {
 
     public function login($login, $pass) {
 
-        $sql = 'SELECT * FROM t_users WHERE user_login = ? AND user_pass = ?';
+        $sql = 'SELECT * 
+                FROM t_users 
+                WHERE user_login = ? 
+                AND user_pass = ?';
         $connectUser = $this->executeRequest($sql, array($login, $pass));
 
         $count = $connectUser->rowCount();
         if($count > 0)
         {
-            session_start();
             $user = $this->getUser($login);
             $_SESSION['login'] = $login;
             $_SESSION['pass'] = $pass;
             $_SESSION['firstname'] = $user['user_firstname'];
+            $_SESSION['lastname'] = $user['user_lastname'];
+            $_SESSION['photo'] = $user['user_photo_url'];
+            $_SESSION['type'] = $user['user_typeid'];
             
             header("location:index.php?action=admin");
         }
@@ -61,6 +65,14 @@ class User extends BDDRequest {
         } else {
             throw new exception("Aucun utilisateur ne correspond au nom d'utilisateur '$login'");
         }
+    }
+
+    public function logout() {
+        // Suppression des variables de session et de la session
+        $_SESSION = array();
+        session_destroy();
+
+        header('location:index.php');
     }
 
     public function insertUser($login, $pass, $email) {

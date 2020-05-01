@@ -23,6 +23,9 @@ class ControleurUser {
 
     }
 
-    
+    public function logout() {
+        $user = new User;
+        $user->logout();
+    }
 
 }

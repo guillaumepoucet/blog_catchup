@@ -47,11 +47,13 @@ class Routeur {
                         if ($_GET['id'] == 'err') {
                             throw new Exception(("Erreur de connection"));
                         } elseif ($_GET['id'] == 'aff') {
-                            throw new Exception(("Erreur d'affichage'"));
+                            throw new Exception(("Action non autorisée'"));
                         }
                     }
                     // renvoie la page admin
                     $this->ctrlUser->adminPage();
+                } elseif ($_GET['action'] == 'deconnection') {
+                    $this->ctrlUser->logout();
                 } else {
                     throw new Exception("Action non valide");
                 } 

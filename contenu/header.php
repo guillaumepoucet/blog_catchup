@@ -18,7 +18,7 @@
                     <li class="cat-2"><a href="category.php">JavaScript</a></li>
                     <li class="cat-3"><a href="category.php">Css</a></li>
                     <li class="cat-4"><a href="category.php">Jquery</a></li>
-                    <?php if(!isset($_SESSION)): ?>
+                    <?php if(empty($_SESSION)): ?>
                     <li><a class="nav-login-btn" href="index.php?action=connection">Se connecter</a></li>
                     <?php elseif (isset($_SESSION)): ?>
                     <li><a class="nav-login-btn" href="index.php?action=deconnection">Se déconnecter</a></li>

@@ -40,7 +40,6 @@ class Routeur {
                     // $pass = $this->getParametre($_POST, 'pass');
                     $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
                     $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;        
-            
                     $this->ctrlUser->login($login, $pass);
                 } elseif ($_GET['action'] == 'admin') {
                     if (isset($_GET['id'])) {

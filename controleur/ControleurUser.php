@@ -22,9 +22,6 @@ class ControleurUser {
         $user = $this->user->login($login, $pass);
         if (!empty($user)) {
             $this->adminPage();
-        } else {
-            //Mauvais identifiant ou mauvais tout cours
-            header("location:index.php?action=admin&id=err");
         }
     }
 

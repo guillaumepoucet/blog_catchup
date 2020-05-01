@@ -33,8 +33,8 @@ class User extends BDDRequest {
 
     public function login($login, $pass) {
 
-        $sql = 'SELECT * 
-                FROM t_users 
+        $sql = 'SELECT U.user_login, U.user_pass
+                FROM t_users U
                 WHERE user_login = ? 
                 AND user_pass = ?';
         $connectUser = $this->executeRequest($sql, array($login, $pass));

@@ -4,6 +4,12 @@
 <?php $i=1 ?>
 
 <div class="row">
+    <div class="col-md-12 alert alert-warning" role="alert">
+        <p>Pour afficher les détails d'un utilisateur, veuillez le sélectionner.</p>
+    </div>
+    <div class="col-md-12 alert alert-warning" role="alert">
+        <p>Pour modifer les droits d'un utilisateur, sélectionner un nouveau rôle dans le menu déroulant.</p>
+    </div>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -13,6 +19,7 @@
                 <th scope="col">Login</th>
                 <th scope="col">Mail</th>
                 <th scope="col">Rôle</th>
+                <th scope="col">Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +36,12 @@
                             <option value=""><?= $user['usertype_name']?></option>
                             <?php foreach($usertypes as $usertype): ?>
                             <option value=""><?= $usertype['usertype_name']?></option>
-                            <?php endforeach ?>                            
+                            <?php endforeach ?>
                         </select>
                         <button class="type-badge">Modifier</button>
                     </form>
                 </td>
+                <td><button class="type-badge delete-bg">Supprimer</button></td>
             </tr>
             <?php endforeach ?>
         </tbody>

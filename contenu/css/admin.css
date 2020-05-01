@@ -53,7 +53,7 @@
 }
 
 .type-badge {
-    border-radius: 10px;
+    border-radius: 8px;
     border-color: transparent;
     font-weight: 600;
     font-size: 0.7em;
@@ -64,6 +64,18 @@
 }
 
 .type-badge:hover {
-    background-color: salmon;
+    background-color: #a7b3c6;
     color: white;
+}
+
+.delete-bg {
+    font-size: 0.9em;
+    margin: 0;
+    color: rgb(255, 255, 255);
+    background-color: #f48f8f;
+    border-radius: 4px;
+}
+
+.delete-bg:hover {
+    background-color: red;
 }

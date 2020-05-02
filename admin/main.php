@@ -103,20 +103,10 @@
 			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 		</script>
 		<!-- Page de connection -->
-		<!-- <script src="contenu/js/admin.js"></script> -->
-		<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
-		<!-- <script>
-			$(document).ready(function () {
-						if ($.fn.dataTable.isDataTable('#userList')) {
-							table = $('#userList').DataTable();
-						} else {
-							$('#userList').DataTable({
-								"pagingType": "simple_numbers"
-							});
-							$('.dataTables_length').addClass('bs-select');
-						}
-					});
-		</script> -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css" />
+		
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+		<script src="contenu/js/admin.js"></script>
 
 </body>
 

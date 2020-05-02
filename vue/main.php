@@ -146,7 +146,7 @@
 	<script src="contenu/js/main.js"></script>
 
 	<!-- Page de connection -->
-	<!-- <script src="contenu/js/admin.js"></script> -->
+	<script src="contenu/js/admin.js"></script>
 
 </body>
 

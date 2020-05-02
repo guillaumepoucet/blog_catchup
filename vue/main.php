@@ -16,7 +16,7 @@
 	<link type="text/css" rel="stylesheet" href="contenu/css/bootstrap.min.css" />
 
 	<!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="contenu/css/style.css" />
@@ -42,10 +42,11 @@
 		<!-- container -->
 		<div class="container">
 			<!-- row -->
+			
 			<div class="row">
 				<div class="col-md-8">
 
-				<?= $content ?>
+					<?= $content ?>
 					<!-- /recent blog posts -->
 
 				</div>

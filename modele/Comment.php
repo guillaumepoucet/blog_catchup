@@ -22,7 +22,7 @@ class Comment extends BDDRequest {
 
     public function deleteComment($comment_id) {
 
-        $sql = 'SELECT * FROM t_comments WHERE comment_id = ?';
+        $sql = 'DELETE FROM t_comments WHERE comment_id = ?';
         $comment = $this->executeRequest($sql, array($comment_id));
 
         return $comment;

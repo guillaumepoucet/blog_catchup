@@ -25,9 +25,17 @@ class ControleurPost {
     public function addComment($post_id) {
         $newComment = $this->comment->addComment($post_id);
         if ($newComment) {
-            $this->post($post_id);
+            header('location:index.php?action=post&id='.$post_id);
         } else {
             throw new Exception("L'ajout de votre commentaire a échoué");
+        }
+    }
+
+    public function deleteComment($comment_id, $post_id) {
+        $delete = $this->comment->deleteComment($comment_id);
+        if ($delete) {
+            $_SESSION['comment'] = 'deleteOk';
+            header('location:index.php?action=post&id='.$post_id);
         }
     }
 }

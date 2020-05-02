@@ -38,10 +38,20 @@ class Routeur {
                     } else {
                         header('location:index.php');
                     }
-                } elseif( (isset($_GET['id']))) {
-                    $post_id = intval($_GET['id']);
-                    if ($post_id != 0) {
-                        $this->ctrlPost->addComment($post_id);
+                } elseif($_GET['action'] == 'addComment') {
+                    if(isset($_GET['id'])) {
+                        $post_id = intval($_GET['id']);
+                        if ($post_id != 0) {
+                            $this->ctrlPost->addComment($post_id);
+                        }
+                    }
+                } elseif($_GET['action'] == 'deleteComment') {
+                    if(isset($_GET['id'])) {
+                        $comment_id = intval($_GET['id']);
+                        $post_id = intval($_GET['post_id']);
+                        if ($post_id != 0) {
+                            $this->ctrlPost->deleteComment($comment_id, $post_id);
+                        }
                     }
                 } elseif ($_GET['action'] == 'login') {
                     // var_dump($_POST['login']); exit;

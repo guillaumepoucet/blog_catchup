@@ -2,11 +2,16 @@
 
 <!-- Blog post -->
 <!-- Page Header -->
+
+
+
 <div id="post-header" class="page-header">
 	<div class="background-img" style="background-image: url('<?= $post['post_cover_url'] ?>')"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
+				
+				
 				<div class="post-meta">
 					<a class="post-category cat-2" href="category.html">JavaScript</a>
 					<span class="post-date"><?= $post['post_date'] ?></span>
@@ -17,7 +22,6 @@
 	</div>
 </div>
 <!-- /Page Header -->
-
 <!-- section -->
 <div class="section">
 	<!-- container -->
@@ -26,6 +30,17 @@
 		<div class="row">
 			<!-- Post content -->
 			<div class="col-md-8">
+				<?php if(isset($_SESSION['comment']) && ($_SESSION['comment'] == 'deleteOk')): ?>
+					<div class="row">
+				<div class="col-md-8 alert alert-danger alert-dismissible show" role="alert">
+					<strong>Commentaire supprimé.</strong>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				</div>
+				<?php endif ?>
+				<?php unset($_SESSION['comment']);?>
 				<div class="section-row sticky-container">
 					<div class="main-post">
 						<?= $post['post_content'] ?>
@@ -101,7 +116,8 @@
 									<span
 										class="time"><?= strftime('%d %b. %Y, %R', strtotime($comment['comment_date'])) ?></span>
 									<?php if(isset($_SESSION['type']) &&  $_SESSION['type']!== 3): ?>
-									<a href="#" class="reply delete">Supprimer</a>
+									<a href="index.php?action=deleteComment&id=<?= $comment['comment_id']?>&post_id=<?=$post['post_id']?>"
+										class="reply delete">Supprimer</a>
 									<?php endif ?>
 								</div>
 								<p><?= $comment['comment_content'] ?>
@@ -122,7 +138,8 @@
 					<div class="section-title">
 						<h2>Laisser un commentaire</h2>
 					</div>
-					<form class="post-reply" action="index.php?action=addComment&id=<?= $post_id = $_GET['id']?>" method="POST">
+					<form class="post-reply" action="index.php?action=addComment&id=<?= $post_id = $_GET['id']?>"
+						method="POST">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">

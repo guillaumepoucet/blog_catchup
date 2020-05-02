@@ -110,4 +110,9 @@ class User extends BDDRequest {
 
     }
 
+    public function editRole($usertype_id, $user_id) {
+
+        $sql = 'UPDATE t_users SET usertype_id = ? WHERE user_id = ?';
+        return $roleEdited = $this->executeRequest($sql, array($usertype_id, $user_id));
+    }
 }

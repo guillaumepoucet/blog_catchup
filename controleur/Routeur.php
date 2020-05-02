@@ -49,6 +49,10 @@ class Routeur {
                             throw new Exception(("Action non autorisée'"));
                         } elseif ($_GET['id'] == 'userlist') {
                             $this->ctrlUser->afficherListeUsers();
+                        } elseif ($_GET['id'] == 'editRole') {
+                            $user_id = !empty($_POST['user_id']) ? $_POST['user_id'] : NULL;
+                            $usertype_id = !empty($_POST['usertype_id']) ? $_POST['usertype_id'] : NULL;               
+                            $this->ctrlUser->editRole($usertype_id, $user_id);
                         } elseif (strpbrk($_GET['id'], 'deleteUser')) {
                             $user_id = str_replace('deleteUser', "", $_GET['id']);
                             $this->ctrlUser->deleteUser($user_id);

@@ -18,17 +18,17 @@
                     <li class="cat-2"><a href="category.php">JavaScript</a></li>
                     <li class="cat-3"><a href="category.php">Css</a></li>
                     <li class="cat-4"><a href="category.php">Jquery</a></li>
-                    <?php if(empty($_SESSION)): ?>
-                    <li><a class="nav-login-btn" href="index.php?action=connection">Se connecter</a></li>
-                    <?php elseif (isset($_SESSION)): ?>
-                    <li><a class="nav-login-btn" href="index.php?action=deconnection">Se déconnecter</a></li>
-                    <li><a class="nav-login-btn" href="index.php?action=admin"><?=$_SESSION['firstname']?></a></li>
-                    <?php endif ?>
                 </ul>
                 <!-- /nav -->
-
+                
                 <!-- search & aside toggle -->
                 <div class="nav-btns">
+                    <?php if(empty($_SESSION)): ?>
+                    <a class="nav-login-btn" href="index.php?action=connection">Se connecter</a>
+                    <?php elseif (isset($_SESSION)): ?>
+                        <a class="nav-login-btn" href="index.php?action=admin"><?=$_SESSION['firstname']?></a>
+                        <button class="logout-btn" href="index.php?action=deconnection"><img src="contenu\img\icons\sign-out-alt-solid.svg"></button>
+                        <?php endif ?>
                     <button class="aside-btn"><i class="fa fa-bars"></i></button>
                     <button class="search-btn"><i class="fa fa-search"></i></button>
                     <div class="search-form">
@@ -57,11 +57,11 @@
                         <li><a class="nav-login-btn" href="index.php?action=admin">Votre compte</a></li>
                         <li><a class="nav-login-btn" href="index.php?action=deconnection">Se déconnecter</a></li>
                     <?php endif ?>
-
+                    
                 </ul>
             </div>
             <!-- /nav -->
-
+            
             <!-- widget posts -->
             <div class="section-row">
                 <h3>Recent Posts</h3>

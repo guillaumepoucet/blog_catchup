@@ -46,4 +46,9 @@ class ControleurUser {
         $delete = $this->user->deleteUser($user_id);
         $this->afficherListeUsers();
     } 
+
+    public function editRole($usertype_id, $user_id) {
+        $edition = $this->user->editRole($usertype_id, $user_id);
+        $this->afficherListeUsers();
+    }
 }

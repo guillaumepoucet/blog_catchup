@@ -36,5 +36,7 @@ class Post extends BDDRequest {
             throw new Exception("Aucun article ne correspond à l'identifiant '$post_id'");
         }
     }
+
+    
     
 }

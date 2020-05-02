@@ -21,7 +21,7 @@ class ControleurUser {
     public function login($login, $pass) {
         $user = $this->user->login($login, $pass);
         if (!empty($user)) {
-            $this->adminPage();
+            header('location:index.php');
         }
     }
 

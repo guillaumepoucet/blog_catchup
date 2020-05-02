@@ -72,7 +72,14 @@
 					</div>
 				</div>
 				<!-- /author -->
-
+				
+				<?php if(!isset($_SESSION['type'])):?>
+					<div class="section-row">
+					<div class="section-title">
+						<p class="alert-comment"><a href="index.php?action=connection">Connectez-vous</a> pour laisser un commentaire !</p>
+					</div>
+				</div>
+				
 				<!-- comments -->
 				<div class="section-row">
 					<div class="section-title">
@@ -89,9 +96,9 @@
 							<div class="media-body">
 								<div class="media-heading">
 									<h4><?= $comment['user_firstname'] . " " . $comment['user_lastname'] ?></h4>
-									<span class="time"><?= strftime('%d %b. %Y, %R', strtotime($comment['comment_date'])) ?></span>
-									<a href="#" class="reply">Répondre</a>
-									<?php if($_SESSION['type'] !== 3): ?>
+									<span
+										class="time"><?= strftime('%d %b. %Y, %R', strtotime($comment['comment_date'])) ?></span>
+									<?php if(isset($_SESSION['type']) &&  $_SESSION['type']!== 3): ?>
 									<a href="#" class="reply delete">Supprimer</a>
 									<?php endif ?>
 								</div>
@@ -102,36 +109,20 @@
 						<?php endforeach ?>
 						<!-- /comment -->
 					</div>
-				
+
 				</div>
 				<!-- /comments -->
 
 				<!-- reply -->
+
+				<?php endif ?>
+				<?php if(isset($_SESSION['type'])):?>
 				<div class="section-row">
 					<div class="section-title">
-						<h2>Leave a reply</h2>
-						<p>your email address will not be published. required fields are marked *</p>
+						<h2>Laisser un commentaire</h2>
 					</div>
 					<form class="post-reply">
 						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<span>Name *</span>
-									<input class="input" type="text" name="name">
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<span>Email *</span>
-									<input class="input" type="email" name="email">
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<span>Website</span>
-									<input class="input" type="text" name="website">
-								</div>
-							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<textarea class="input" name="message" placeholder="Message"></textarea>
@@ -141,7 +132,9 @@
 						</div>
 					</form>
 				</div>
+				<?php endif ?>
 				<!-- /reply -->
+
 			</div>
 			<!-- /Post content -->
 		</div>

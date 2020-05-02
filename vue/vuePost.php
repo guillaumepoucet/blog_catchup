@@ -72,14 +72,16 @@
 					</div>
 				</div>
 				<!-- /author -->
-				
+
 				<?php if(!isset($_SESSION['type'])):?>
-					<div class="section-row">
+				<div class="section-row">
 					<div class="section-title">
-						<p class="alert-comment"><a href="index.php?action=connection">Connectez-vous</a> pour laisser un commentaire !</p>
+						<p class="alert-comment"><a href="index.php?action=connection">Connectez-vous</a> pour laisser
+							un commentaire !</p>
 					</div>
 				</div>
-				
+				<?php endif ?>
+
 				<!-- comments -->
 				<div class="section-row">
 					<div class="section-title">
@@ -115,19 +117,19 @@
 
 				<!-- reply -->
 
-				<?php endif ?>
 				<?php if(isset($_SESSION['type'])):?>
 				<div class="section-row">
 					<div class="section-title">
 						<h2>Laisser un commentaire</h2>
 					</div>
-					<form class="post-reply">
+					<form class="post-reply" action="index.php?action=addComment&id=<?= $post_id = $_GET['id']?>" method="POST">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<textarea class="input" name="message" placeholder="Message"></textarea>
+									<input type="hidden" name="post_id" value="">
+									<textarea class="input" name="comment" placeholder="Votre commentaire"></textarea>
 								</div>
-								<button class="primary-button">Submit</button>
+								<button class="primary-button">Envoyer</button>
 							</div>
 						</div>
 					</form>

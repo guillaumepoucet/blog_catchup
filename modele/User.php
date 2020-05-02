@@ -46,6 +46,7 @@ class User extends BDDRequest {
             $user = $this->getUser($login);
             $mdpval = password_verify($pass, $user['user_pass']);
             if ($mdpval) {
+                $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['login'] = $login;
                 $_SESSION['pass'] = $pass;
                 $_SESSION['firstname'] = $user['user_firstname'];

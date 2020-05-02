@@ -38,6 +38,11 @@ class Routeur {
                     } else {
                         header('location:index.php');
                     }
+                } elseif( (isset($_GET['id']))) {
+                    $post_id = intval($_GET['id']);
+                    if ($post_id != 0) {
+                        $this->ctrlPost->addComment($post_id);
+                    }
                 } elseif ($_GET['action'] == 'login') {
                     // var_dump($_POST['login']); exit;
                     // $login = $this->getParametre($_POST, 'login');

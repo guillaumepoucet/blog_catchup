@@ -32,8 +32,12 @@ class Routeur {
                         throw new Exception("Identifiant de billet non défini");
                     } 
                 } elseif ($_GET['action'] == 'connection') {
-                    //renvoie la page de connection/inscription
-                    $this->ctrlUser->loginPage();
+                    if (empty($_SESSION)) {
+                        //renvoie la page de connection/inscription
+                        $this->ctrlUser->loginPage();
+                    } else {
+                        header('location:index.php');
+                    }
                 } elseif ($_GET['action'] == 'login') {
                     // var_dump($_POST['login']); exit;
                     // $login = $this->getParametre($_POST, 'login');
@@ -50,12 +54,15 @@ class Routeur {
                         } elseif ($_GET['id'] == 'aff') {
                             throw new Exception(("Action non autorisée'"));
                         } elseif ($_GET['id'] == 'userlist') {
+                            // admin afficher la liste des membres
                             $this->ctrlUser->afficherListeUsers();
                         } elseif ($_GET['id'] == 'editRole') {
+                            // actualise la vue arès avoir changé le rôle d'un membre
                             $user_id = !empty($_POST['user_id']) ? $_POST['user_id'] : NULL;
                             $usertype_id = !empty($_POST['usertype_id']) ? $_POST['usertype_id'] : NULL;               
                             $this->ctrlUser->editRole($usertype_id, $user_id);
                         } elseif (strpbrk($_GET['id'], 'deleteUser')) {
+                            // supprimer un membre
                             $user_id = str_replace('deleteUser', "", $_GET['id']);
                             $this->ctrlUser->deleteUser($user_id);
                         }

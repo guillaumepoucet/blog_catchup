@@ -19,6 +19,7 @@
 
 .admin-grid {
     display: grid;
+    align-items: center;
 }
 
 .admin-aside {
@@ -39,26 +40,17 @@
 }
 
 #admin-header {
-    display: flex;
-    align-items: center;
 }
 
-#admin .media h2 {
-    align-self: center;
-}
-
-.admin-photo img {
+.profil-photo {
     border-radius: 50%;
     margin: 0em auto 2em;
+    grid-column-start: 1;
 }
 
 .content {
     grid-column-start: 2;
     padding: 0em 3em 0em;
-}
-
-#admin-header h2 {
-    margin-left: 1em;
 }
 
 .thead-dark {

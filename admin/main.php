@@ -46,22 +46,15 @@
 
 			<!-- row -->
 			<div class="row">
-				<div id="admin-header" class="row">
-					<div class="col-md-2 admin-photo">
-						<img class="media-object" src="<?= $_SESSION['photo'] ?>" alt="">
-					</div>
-					<div class="col-md-9">
-						<h2>Bonjour <?= $_SESSION['firstname'] ?>,</h2>
-					</div>
-				</div>
-			</div>
-			<!-- /row -->
-
-			<!-- row -->
-			<div class="row admin-grid">
-				<!-- aside -->
-				<div class="admin-aside">
-					<div>
+				<!-- row -->
+				<div class="row admin-grid">
+					<img class="media-object profil-photo" src="<?= $_SESSION['photo'] ?>" alt="">
+					<h2>Bonjour <?= $_SESSION['firstname'] ?>,</h2>
+					<!-- aside -->
+					<div class="admin-aside">
+			
+			
+						<div>
 						<h4>Gérer mon profil</h4>
 						<a href="">Modifier mes informations</a>
 						<a href="">Changer ma photo de profil</a>
@@ -81,7 +74,6 @@
 
 				</div>
 				<!-- /aside -->
-
 				<div class="content">
 
 					<?= $content ?>

@@ -49,61 +49,74 @@
 				<!-- row -->
 				<div class="row admin-grid">
 					<img class="media-object profil-photo" src="<?= $_SESSION['photo'] ?>" alt="">
-					<h2>Bonjour <?= $_SESSION['firstname'] ?>,</h2>
+					<h2>Bonjour <?= $_SESSION['firstname'] ?> !</h2>
 					<!-- aside -->
 					<div class="admin-aside">
-			
-			
+
+
 						<div>
-						<h4>Gérer mon profil</h4>
-						<a href="">Modifier mes informations</a>
-						<a href="">Changer ma photo de profil</a>
-						<a href="">Supprimer mon profil</a>
-					</div>
+							<h4>Gérer mon profil</h4>
+							<a href="">Modifier mes informations</a>
+							<a href="">Changer ma photo de profil</a>
+							<a href="">Supprimer mon profil</a>
+						</div>
 
-					<?php if($_SESSION['type'] == 1): ?>
-					<div>
-						<h4>Gérer les articles</h4>
-						<a href="">Rédiger un article</a>
+						<?php if($_SESSION['type'] == 1): ?>
+						<div>
+							<h4>Gérer les articles</h4>
+							<a href="">Rédiger un article</a>
+						</div>
+						<div>
+							<h4>Gérer les utilisateurs</h4>
+							<a href="index.php?action=admin&id=userlist">Liste des utilisateurs</a>
+						</div>
+						<?php endif ?>
+
 					</div>
-					<div>
-						<h4>Gérer les utilisateurs</h4>
-						<a href="index.php?action=admin&id=userlist">Liste des utilisateurs</a>
+					<!-- /aside -->
+					<div class="content">
+
+						<?= $content ?>
+						<!-- /recent blog posts -->
+
 					</div>
-					<?php endif ?>
 
 				</div>
-				<!-- /aside -->
-				<div class="content">
-
-					<?= $content ?>
-					<!-- /recent blog posts -->
-
-				</div>
-
+				<!-- /row -->
 			</div>
-			<!-- /row -->
+			<!-- /container -->
 		</div>
-		<!-- /container -->
-	</div>
-	<!-- /section -->
+		<!-- /section -->
 
-	<!-- Footer -->
-	<?php include('contenu/footer.php') ?>
-	<!-- /Footer -->
+		<!-- Footer -->
+		<?php include('contenu/footer.php') ?>
+		<!-- /Footer -->
 
-	<!-- jQuery Plugins -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-	</script>
-	<!-- Page de connection -->
-	<!-- <script src="contenu/js/admin.js"></script> -->
+		<!-- jQuery Plugins -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+		</script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+		</script>
+		<!-- Page de connection -->
+		<!-- <script src="contenu/js/admin.js"></script> -->
+		<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
+		<!-- <script>
+			$(document).ready(function () {
+						if ($.fn.dataTable.isDataTable('#userList')) {
+							table = $('#userList').DataTable();
+						} else {
+							$('#userList').DataTable({
+								"pagingType": "simple_numbers"
+							});
+							$('.dataTables_length').addClass('bs-select');
+						}
+					});
+		</script> -->
 
 </body>
 

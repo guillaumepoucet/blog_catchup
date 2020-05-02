@@ -13,14 +13,14 @@
         </button>
     </div>
     <?php endif ?>
-    
+
     <div class="col-md-12 alert alert-warning" role="alert">
         <p>Pour afficher les détails d'un utilisateur, veuillez le sélectionner.</p>
     </div>
     <div class="col-md-12 alert alert-warning" role="alert">
         <p>Pour modifer les droits d'un utilisateur, sélectionner un nouveau rôle dans le menu déroulant.</p>
     </div>
-    <table class="table">
+    <table id="userList" class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -32,7 +32,7 @@
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-striped">
             <?php foreach($users as $user): ?>
             <tr>
                 <th scope="row"><?php echo $i; $i++ ?></th>
@@ -60,4 +60,19 @@
             <?php endforeach ?>
         </tbody>
     </table>
+
+    <!-- <nav class="nav-page" aria-label="Page navigation example" >
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Précédent</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Suivant</a>
+            </li>
+        </ul>
+    </nav> -->
+
 </div>

@@ -26,13 +26,17 @@
     grid-template-columns: auto 1fr;
 }
 
+.admin-grid h2 {
+    align-self: center;
+}
+
 .admin-aside {
     border-right: 1px solid #0000001c;
     grid-column-start: 1;
     padding: 2em;
 }
 
-.admin-aside > div {
+.admin-aside>div {
     margin-bottom: 1.5em;
     padding-left: 1em;
 }
@@ -87,4 +91,12 @@
 .delete-bg:hover {
     text-decoration: none;
     background-color: red;
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: #a7b3c657;
+}
+
+.nav-page {
+    text-align: center;
 }

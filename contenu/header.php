@@ -6,7 +6,7 @@
             <div class="container">
                 <!-- logo -->
                 <div class="nav-logo">
-                    <a href="index.php" class="logo"><img src="./contenu/img/logo.png" alt=""></a>
+                    <a href="index.php" class="logo"><img src=".\contenu\img\logoCatchUp.png" alt=""></a>
                 </div>
                 <!-- /logo -->
 

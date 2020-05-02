@@ -73,9 +73,7 @@
 					</div>
 					<div>
 						<h4>Gérer les utilisateurs</h4>
-						<a href="index.php?action=admin&id=userlist">Liste des utilisateur</a>
-						<a href="">Modifier un utilisateur</a>
-						<a href="">Supprimer un utilisateur</a>
+						<a href="index.php?action=admin&id=userlist">Liste des utilisateurs</a>
 					</div>
 					<?php endif ?>
 

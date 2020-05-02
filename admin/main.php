@@ -18,7 +18,7 @@
 	<link type="text/css" rel="stylesheet" href="contenu/css/bootstrap.min.css" />
 
 	<!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="contenu/css/style.css" />
@@ -45,20 +45,22 @@
 		<div class="container-fluid">
 
 			<!-- row -->
-			<div id="admin-header" class="row">
-				<div class="col-md-2 admin-photo">
-					<img class="media-object" src="<?= $_SESSION['photo'] ?>" alt="">
-				</div>
-				<div class="col-md-9">
-					<h2>Bonjour <?= $_SESSION['firstname'] ?>,</h2>
+			<div class="row">
+				<div id="admin-header" class="row">
+					<div class="col-md-2 admin-photo">
+						<img class="media-object" src="<?= $_SESSION['photo'] ?>" alt="">
+					</div>
+					<div class="col-md-9">
+						<h2>Bonjour <?= $_SESSION['firstname'] ?>,</h2>
+					</div>
 				</div>
 			</div>
 			<!-- /row -->
 
 			<!-- row -->
-			<div class="row">
+			<div class="row admin-grid">
 				<!-- aside -->
-				<div class="col-md-3 admin-aside">
+				<div class="admin-aside">
 					<div>
 						<h4>Gérer mon profil</h4>
 						<a href="">Modifier mes informations</a>
@@ -80,7 +82,7 @@
 				</div>
 				<!-- /aside -->
 
-				<div class="col-md-8 content">
+				<div class="content">
 
 					<?= $content ?>
 					<!-- /recent blog posts -->

@@ -17,8 +17,14 @@
     margin: 5px 0px 10px;
 }
 
+.admin-grid {
+    display: grid;
+}
+
 .admin-aside {
     border-right: 1px solid #0000001c;
+    grid-column-start: 1;
+    padding: 2em;
 }
 
 .admin-aside > div {
@@ -46,8 +52,12 @@
     margin: 0em auto 2em;
 }
 
-#admin-header h2,
 .content {
+    grid-column-start: 2;
+    padding: 0em 3em 0em;
+}
+
+#admin-header h2 {
     margin-left: 1em;
 }
 

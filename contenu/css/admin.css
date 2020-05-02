@@ -10,7 +10,11 @@
 }
 
 .logout-btn {
-    width: 68px;
+    padding: 25px 25px;
+}
+
+.logout-btn img {
+    width: 1.1em;
 }
 
 .login-page button {
@@ -19,7 +23,7 @@
 
 .admin-grid {
     display: grid;
-    align-items: center;
+    grid-template-columns: auto 1fr;
 }
 
 .admin-aside {
@@ -37,9 +41,6 @@
     display: block;
     margin-left: 1em;
     font-weight: 500;
-}
-
-#admin-header {
 }
 
 .profil-photo {

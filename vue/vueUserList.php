@@ -12,8 +12,8 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-
     <?php endif ?>
+    
     <div class="col-md-12 alert alert-warning" role="alert">
         <p>Pour afficher les détails d'un utilisateur, veuillez le sélectionner.</p>
     </div>

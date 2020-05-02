@@ -33,23 +33,29 @@ class User extends BDDRequest {
 
     public function login($login, $pass) {
 
+
         $sql = 'SELECT U.user_login, U.user_pass
                 FROM t_users U
-                WHERE user_login = ? 
-                AND user_pass = ?';
-        $connectUser = $this->executeRequest($sql, array($login, $pass));
+                WHERE user_login = ?';
 
+        $connectUser = $this->executeRequest($sql, array($login));
+        
         $count = $connectUser->rowCount();
-        if($count > 0)
-        {
+
+        if($count > 0) {   
             $user = $this->getUser($login);
-            $_SESSION['login'] = $login;
-            $_SESSION['pass'] = $pass;
-            $_SESSION['firstname'] = $user['user_firstname'];
-            $_SESSION['lastname'] = $user['user_lastname'];
-            $_SESSION['photo'] = $user['user_photo_url'];
-            $_SESSION['type'] = $user['usertype_id'];
-            return $user;
+            $mdpval = password_verify($pass, $user['user_pass']);
+            if ($mdpval) {
+                $_SESSION['login'] = $login;
+                $_SESSION['pass'] = $pass;
+                $_SESSION['firstname'] = $user['user_firstname'];
+                $_SESSION['lastname'] = $user['user_lastname'];
+                $_SESSION['photo'] = $user['user_photo_url'];
+                $_SESSION['type'] = $user['usertype_id'];
+                return $user;
+            } else {
+                throw new Exception ("Le mot de passe ne correspond pas");
+            } 
         }
     }
 
@@ -75,32 +81,89 @@ class User extends BDDRequest {
         header('location:index.php');
     }
 
-    public function insertUser($login, $pass, $email) {
+    public function insertUser() {
 
         $user_lastname = !empty($_POST['lastname']) ? $_POST['lastname'] : NULL;
         $user_firstname = !empty($_POST['firstname']) ? $_POST['firstname'] : NULL;
         $user_login = !empty($_POST['login']) ? $_POST['login'] : NULL;
         $user_mail = !empty($_POST['mail']) ? $_POST['mail'] : NULL;
+        $user_pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;
+        $pass2 = !empty($_POST['pass2']) ? $_POST['pass2'] : NULL;
 
-        $user_token = random(60);
-        $user_pass = password_hash($pass, PASSWORD_DEFAULT);
 
-
-        $sql = 'INSERT INTO `t_users`(`user_lastname`, `user_firstname`, `user_login`, `user_mail`, `user_pass`, `user_token`) 
-                VALUES (?, ?, ?, ?, ?, ?)';
-        $newUser = $this->executeRequest($sql, array(
-            'user_lastname' => $user_lastname,
-            'user_firstname' => $user_firstname,
-            'user_login' => $user_login,
-            'user_mail' => $user_mail,
-            'user_pass' => $user_pass,
-            'user_token' => $user_token,
-        ));
-
-        $user_id = $sql->lastinsertId(); 
-
-        mail($email, "Confirmation de votre compte", "Afin de valider cotre compte, merci de cliquer sur ce lien \n\n <a href=\"http://localhost/jeupoo/traitement/confirm.php?id=$user_id&token=$user_token\">Valider votre compte</a>");
+        $sql ='SELECT user_id FROM t_users WHERE user_login = ?';
+        $user = $this->executeRequest($sql, array($user_login));
         
+        if ($user->rowCount() == 0) {
+
+            $user_token = $this->random(60);
+
+            // checking if both password are the same
+            $same = strcmp($user_pass, $pass2);
+            if ($same == 0) {
+
+                $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
+
+                $sql = 'INSERT INTO t_users(user_lastname, user_firstname, user_login, user_mail, user_pass, user_token) 
+                        VALUES (:user_lastname, :user_firstname, :user_login, :user_mail, :user_pass, :user_token)';
+                $newUser = $this->executeRequest($sql, array(
+                    'user_lastname' => $user_lastname,
+                    'user_firstname' => $user_firstname,
+                    'user_login' => $user_login,
+                    'user_mail' => $user_mail,
+                    'user_pass' => $user_pass,
+                    'user_token' => $user_token,
+                ));
+        
+                return $newUser;
+    
+                // $user_id = $sql->lastinsertId(); 
+                //mail($email, "Confirmation de votre compte", "Afin de valider cotre compte, merci de cliquer sur ce lien \n\n <a href=\"http://localhost/jeupoo/traitement/confirm.php?id=$user_id&token=$user_token\">Valider votre compte</a>");
+            
+            } else {
+                throw new Exception("Les mots de passes ne correspondent pas.");
+            }
+    
+        } else {
+            throw new exception("Un utilisateur existe déjà avec ce nom : '$user_login'");
+        }
+        
+    }
+
+    public function random($length) {
+
+        $alphabet = "0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+        return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+
+    }
+
+    public function confirm($user_id, $token) {
+  
+        $user_id = !empty($_GET['id']) ? $_GET['id'] : NULL;
+        $token = !empty($_GET['token']) ? $_GET['token'] : NULL;
+
+        $connexion = new Database('localhost', 'poo', 'root', '');
+        $bdd = $connexion->PDOConnexion();
+        
+        $req = $bdd->prepare('  SELECT * FROM user WHERE id_user = ?');
+        $req -> execute([$user_id]);
+        
+        $user = $req->fetch();
+
+        $same = strcmp($token, $user['$token']);
+        
+        if ($same == 60) {
+            $confirmation = $bdd->prepare(' UPDATE user 
+                                            SET confirmed = ?
+                                            WHERE id_user = ?');
+            $confirmation->execute(array(1, $user_id));
+            session_start();
+            header('location:../index.php?=confirm=ok');
+
+        } else {
+            header('location:../index.php?confirm=error');
+        }
+
     }
 
     public function deleteUser($user_id) {

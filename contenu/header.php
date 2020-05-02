@@ -27,7 +27,7 @@
                     <a class="nav-login-btn" href="index.php?action=connection">Se connecter</a>
                     <?php elseif (isset($_SESSION)): ?>
                         <a class="nav-login-btn" href="index.php?action=admin"><?=$_SESSION['firstname']?></a>
-                        <button class="logout-btn" href="index.php?action=deconnection"><img src="contenu\img\icons\sign-out-alt-solid.svg"></button>
+                        <a class="logout-btn" href="index.php?action=deconnection"><img src="contenu\img\icons\sign-out-alt-solid.svg"></a>
                         <?php endif ?>
                     <button class="aside-btn"><i class="fa fa-bars"></i></button>
                     <button class="search-btn"><i class="fa fa-search"></i></button>

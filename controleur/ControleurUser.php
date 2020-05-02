@@ -53,4 +53,11 @@ class ControleurUser {
         $edition = $this->user->editRole($usertype_id, $user_id);
         $this->afficherListeUsers();
     }
+
+    public function newUser() {
+        $newUser = $this->user->insertUser();
+        if($newUser) {
+            header('location:index.php?action=connection&id=signinOk');
+        }
+    }
 }

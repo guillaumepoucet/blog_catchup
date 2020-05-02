@@ -10,7 +10,6 @@ class ControleurUser {
 
     public function __construct() {
         $this->user = new User;
-        $this->vue = new Vue($this->name);
     }
 
     public function loginPage() { 

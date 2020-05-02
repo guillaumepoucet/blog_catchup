@@ -18,4 +18,7 @@ class ControleurAccueil {
         $vue->generer(array('posts' => $posts));
     }
 
+    public function getCategories() {
+        $categories = $this->post->getCategories();
+    }
 }

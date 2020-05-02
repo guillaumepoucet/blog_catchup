@@ -7,7 +7,13 @@ class Post extends BDDRequest {
     //récupére tous les articles
     public function getPosts() {
 
-        $sql = 'SELECT * FROM t_posts';
+        $sql = 'SELECT  P.*,
+                        C.*
+                FROM t_posts P
+                LEFT JOIN r_posseder R 
+                    ON P.post_id = R.post_id
+                LEFT JOIN t_categories C 
+                    ON C.category_id = R.category_id';
         $posts = $this->executeRequest($sql);
         return $posts->fetchAll();
     }
@@ -37,6 +43,11 @@ class Post extends BDDRequest {
         }
     }
 
-    
+    public function getCategories() {
+        $sql = 'SELECT * FROM t_categories';
+        $categories = $this->executeRequest($sql);
+        return $categories->fetchAll();
+        throw new Exception ($categories);
+    }
     
 }

@@ -14,10 +14,10 @@
                 <ul class="nav-menu nav navbar-nav">
                     <li><a href="category.php">News</a></li>
                     <li><a href="category.php">Popular</a></li>
-                    <li class="cat-1"><a href="category.php">Web Design</a></li>
-                    <li class="cat-2"><a href="category.php">JavaScript</a></li>
-                    <li class="cat-3"><a href="category.php">Css</a></li>
-                    <li class="cat-4"><a href="category.php">Jquery</a></li>
+                    <?=var_dump($categories);?>
+                    <?php foreach($categories as $categorie): ?>
+                    <li class="cat-<?=$categorie['category_id']?>"><a href="category.php"><?=$categorie['category_name']?><<<<<<</a></li>
+                    <?php endforeach ?>
                 </ul>
                 <!-- /nav -->
                 

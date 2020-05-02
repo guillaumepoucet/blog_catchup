@@ -54,7 +54,7 @@
 				<!-- aside -->
 				<div class="col-md-4">
 					<!-- most read posts -->
-					<?php include('contenu/most_read.php') ?>
+					<!-- <?php include('contenu/most_read.php') ?> -->
 					<!-- /most read posts -->
 
 					<!-- ad -->

@@ -6,19 +6,20 @@ require_once 'ControleurUser.php';
 require_once 'vue/Vue.php';
 
 class Routeur {
-
+    
     private $_ctrlAccueil;
     private $_ctrlPost;
-
+    
     public function __construct() {
         $this->ctrlAccueil = new ControleurAccueil();
         $this->ctrlPost = new ControleurPost();
         $this->ctrlUser = new ControleurUser();
     }
-
+    
     // Traite une requête entrante
     public function routeurRequete() {
         try {
+            $categories = $this->ctrlAccueil->getCategories();
             if (isset($_GET['action'])) {
                 if ($_GET['action'] == 'post') {
                     if (isset($_GET['id'])) {

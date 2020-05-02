@@ -44,7 +44,9 @@ class ControleurUser {
 
     public function deleteUser($user_id) {
         $delete = $this->user->deleteUser($user_id);
-        $this->afficherListeUsers();
+        if($delete) {
+            header('location:index.php?action=admin&id=userlist&statut=deleteOk');
+        }
     } 
 
     public function editRole($usertype_id, $user_id) {

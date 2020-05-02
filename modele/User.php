@@ -107,7 +107,6 @@ class User extends BDDRequest {
 
         $sql = 'DELETE FROM t_users WHERE user_id = ?';
         return $delUser = $this->executeRequest($sql, array($user_id));
-
     }
 
     public function editRole($usertype_id, $user_id) {

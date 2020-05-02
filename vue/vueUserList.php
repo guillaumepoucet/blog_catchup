@@ -4,13 +4,15 @@
 <?php $i=1 ?>
 
 <div class="row">
-    <?php if(isset($_GET['id']) && (strpbrk($_GET['id'], 'deleteUser'))): ?>
+
+    <?php if(isset($_GET['statut']) && ($_GET['statut'] == 'deleteOk')):?>
     <div class="col-md-12 alert alert-danger alert-dismissible show" role="alert">
         <strong>Utilisateur supprimé.</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+
     <?php endif ?>
     <div class="col-md-12 alert alert-warning" role="alert">
         <p>Pour afficher les détails d'un utilisateur, veuillez le sélectionner.</p>

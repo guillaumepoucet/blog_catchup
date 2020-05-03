@@ -18,7 +18,8 @@ class Post extends BDDRequest
                 LEFT JOIN t_categories C 
                     ON C.category_id = R.category_id
                 LEFT JOIN t_users U
-                    ON P.user_id = U.user_id';
+                    ON P.user_id = U.user_id
+                WHERE post_activated = 1';
         $posts = $this->executeRequest($sql);
         return $posts->fetchAll();
     }
@@ -77,6 +78,7 @@ class Post extends BDDRequest
             'user_id' => $archive['user_id'],
             'post_id' => $post_id
         ));
+        return $act;
     }
 
     public function setCategory($post_id, $category_id)
@@ -86,5 +88,15 @@ class Post extends BDDRequest
                 WHERE R.post_id = ?';
         $edit = $this->executeRequest($sql, array($category_id, $post_id));
         return $edit;
+    }
+
+    public function getArchivePosts() {
+        $sql = 'SELECT  A.*,
+                        P.* 
+                FROM t_post_archives A
+                LEFT JOIN t_posts P 
+                    ON P.post_id = A.post_id';
+        $archives = $this->executeRequest($sql);
+        return $archives->fetchAll();
     }
 }

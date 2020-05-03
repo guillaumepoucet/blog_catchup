@@ -68,6 +68,7 @@
 								<div>
 									<h4>Gérer les articles</h4>
 									<a href="index.php?action=admin&id=postlist">Liste des articles</a>
+									<a href="index.php?action=admin&id=archives">Archives des articles</a>
 									<a href="">Rédiger un article</a>
 								</div>
 								<div>

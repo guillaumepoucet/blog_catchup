@@ -65,11 +65,21 @@ class ControleurPost
     public function archivePost($post_id)
     {
         $archive = $this->post->archivePost($post_id);
+        if ($archive) {
+            $_SESSION['archive'] = 'Ok';
+            header('location:index.php?action=admin&id=postlist');
+        }
     }
 
     public function editCategory($post_id, $category_id) {
         $edition = $this->post->setCategory($post_id, $category_id);
         if ($edition) {
         $this->getPosts();}
+    }
+
+    public function getArchivePosts() {
+        $archives = $this->post->getArchivePosts();
+        $vue = new Vue("ArchiveList");
+        $vue->genererAdmin(array('archives' => $archives));
     }
 }

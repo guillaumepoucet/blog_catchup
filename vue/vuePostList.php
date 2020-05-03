@@ -15,6 +15,16 @@
     <?php endif ?>
     <?php unset($_SESSION['delete']);?>
 
+    <?php if (isset($_SESSION['archive']) && ($_SESSION['archive'] == 'Ok')) : ?>
+        <div class="col-md-12 alert alert-warning alert-dismissible show" role="alert">
+            <strong>Article archivé.</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif ?>
+    <?php unset($_SESSION['archive']);?>
+
     <div class="col-md-12 alert alert-warning" role="alert">
         <p>Pour afficher un article, cliquez sur son titre.</p>
     </div>

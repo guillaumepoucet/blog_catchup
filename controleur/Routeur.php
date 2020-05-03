@@ -70,6 +70,8 @@ class Routeur
                             throw new Exception(("Action non autorisée'"));
                         } elseif ($_GET['id'] == 'postlist') {
                             $this->ctrlPost->getPosts();
+                        } elseif ($_GET['id'] == 'archives') {
+                            $this->ctrlPost->getArchivePosts();
                         } elseif ($_GET['id'] == 'userlist') {
                             // admin afficher la liste des membres
                             $this->ctrlUser->afficherListeUsers();

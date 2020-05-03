@@ -78,6 +78,11 @@ class Routeur
                             $user_id = !empty($_POST['user_id']) ? $_POST['user_id'] : NULL;
                             $usertype_id = !empty($_POST['usertype_id']) ? $_POST['usertype_id'] : NULL;
                             $this->ctrlUser->editRole($usertype_id, $user_id);
+                        } elseif ($_GET['id'] == 'editCategory') {
+                            // actualise la vue arès avoir changé la categorie d'un article
+                            $post_id = !empty($_POST['post_id']) ? $_POST['post_id'] : NULL;
+                            $category_id = !empty($_POST['category_id']) ? $_POST['category_id'] : NULL;
+                            $this->ctrlPost->editCategory($post_id, $category_id);
                         } elseif (strpbrk($_GET['id'], 'deleteUser')) {
                             // supprimer un membre
                             $user_id = str_replace('deleteUser', "", $_GET['id']);

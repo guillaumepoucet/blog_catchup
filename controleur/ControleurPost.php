@@ -66,4 +66,10 @@ class ControleurPost
     {
         $archive = $this->post->archivePost($post_id);
     }
+
+    public function editCategory($post_id, $category_id) {
+        $edition = $this->post->setCategory($post_id, $category_id);
+        if ($edition) {
+        $this->getPosts();}
+    }
 }

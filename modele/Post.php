@@ -2,10 +2,12 @@
 
 require_once('BDDRequest.php');
 
-class Post extends BDDRequest {
-    
+class Post extends BDDRequest
+{
+
     //récupére tous les articles
-    public function getPosts() {
+    public function getPosts()
+    {
 
         $sql = 'SELECT  P.*,
                         C.*,
@@ -22,8 +24,9 @@ class Post extends BDDRequest {
     }
 
     // renvoie les informations d'un billet par son id   
-    public function getPost($post_id) {
-        
+    public function getPost($post_id)
+    {
+
         $sql = 'SELECT 
                 P.*,
                 I.post_img_url,
@@ -38,7 +41,7 @@ class Post extends BDDRequest {
                     ON U.user_id = P.user_id
                 WHERE P.post_id = ?';
         $post = $this->executeRequest($sql, array($post_id));
-    
+
         if ($post->rowCount() == 1) {
             return $post->fetch();
         } else {
@@ -46,22 +49,25 @@ class Post extends BDDRequest {
         }
     }
 
-    public function getCategories() {
+    public function getCategories()
+    {
         $sql = 'SELECT * FROM t_categories';
         $categories = $this->executeRequest($sql);
         return $categories->fetchAll();
     }
 
-    public function deletePost($post_id) {
+    public function deletePost($post_id)
+    {
         $sql = 'DELETE FROM t_posts WHERE post_id = ?';
         $delete = $this->executeRequest($sql, array($post_id));
         return $delete;
     }
 
-    public function archivePost($post_id) {
+    public function archivePost($post_id)
+    {
         $sql = 'UPDATE t_posts SET post_activated = ? WHERE post_id = ?';
         $act = $this->executeRequest($sql, array('0', $post_id));
-        
+
         $archive = $this->getPost(($post_id));
         $date = date('Y-m-d H:i:s');
         $sql = 'INSERT INTO t_post_archives (post_archive_date, user_id, post_id)
@@ -72,5 +78,13 @@ class Post extends BDDRequest {
             'post_id' => $post_id
         ));
     }
-    
+
+    public function setCategory($post_id, $category_id)
+    {
+        $sql = 'UPDATE r_posseder R
+                SET R.category_id = ?
+                WHERE R.post_id = ?';
+        $edit = $this->executeRequest($sql, array($category_id, $post_id));
+        return $edit;
+    }
 }

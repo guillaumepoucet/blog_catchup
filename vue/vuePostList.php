@@ -40,7 +40,7 @@
                     <td><?= $post['post_date'] ?></td>
                     <td class="col-5">
                         <form id="category" action="index.php?action=admin&id=editCategory" method="POST">
-                            <input type="hidden" name="category" value="<?= $user_id = $post['category_id'] ?>">
+                            <input type="hidden" name="post_id" value="<?= $post_id = $post['post_id'] ?>">
                             <select name="category_id" id="category_id">
                                 <option value="<?= $post['category_id'] ?>"><?= $post['category_name'] ?></option>
                                 <?php foreach ($categories as $category) : ?>

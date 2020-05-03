@@ -198,28 +198,28 @@ class User extends BDDRequest
         $description = !empty($_POST['description']) ? $_POST['description'] : NULL;
 
         if (!empty($firstname)) {
-            $sql = 'UPDATE users SET user_firstname = ? WHERE user_id =' . $user_id;
-            $sql->execute([$firstname]);
-        };
+            $sql = 'UPDATE t_users SET user_firstname = ? WHERE user_id =' . $user_id;
+            $edit = $this->executeRequest($sql, array($firstname));
+        }
 
         if (!empty($lastname)) {
-            $sql = 'UPDATE users SET user_lastname = ? WHERE user_id =' . $user_id;
-            $sql->execute([$lastname]);
+            $sql = 'UPDATE t_users SET user_lastname = ? WHERE user_id =' . $user_id;
+            $this->executeRequest($sql, array($lastname));
         };
 
         if (!empty($login)) {
-            $sql = 'UPDATE users SET user_login = ? WHERE user_id =' . $user_id;
-            $sql->execute([$login]);
+            $sql = 'UPDATE t_users SET user_login = ? WHERE user_id =' . $user_id;
+            $this->executeRequest($sql, array($login));
         };
 
         if (!empty($mail)) {
-            $sql = 'UPDATE users SET user_mail = ? WHERE user_id =' . $user_id;
-            $sql->execute([$mail]);
+            $sql = 'UPDATE t_users SET user_mail = ? WHERE user_id =' . $user_id;
+            $this->executeRequest($sql, array($mail));
         };
 
         if (!empty($description)) {
-            $sql = 'UPDATE users SET description = ? WHERE user_id =' . $user_id;
-            $sql->execute([$description]);
+            $sql = 'UPDATE t_users SET user_description = ? WHERE user_id =' . $user_id;
+            $this->executeRequest($sql, array($description));
         };
 
         // checking if both password are the same
@@ -227,8 +227,8 @@ class User extends BDDRequest
         if ($same == 0) {
 
             $pass = password_hash($pass, PASSWORD_DEFAULT);
-            $sql = 'UPDATE users SET description = ? WHERE user_id =' . $user_id;
-            $sql->execute([$description]);
+            $sql = 'UPDATE t_users SET user_pass = ? WHERE user_id =' . $user_id;
+            $this->executeRequest($sql, array($description));
         };
     }
 }

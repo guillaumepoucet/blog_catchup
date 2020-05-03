@@ -80,9 +80,8 @@ class ControleurUser
     public function setInfoUSer($user_id)
     {
         $set = $this->user->setInfoUSer($user_id);
-        if ($set) {
-            $_SESSION['set'] = 'ok';
-            $this->viewInfoUser($user_id);
-        }
+        $_SESSION['set'] = 'ok';
+        $this->viewInfoUser($user_id);
+   
     }
 }

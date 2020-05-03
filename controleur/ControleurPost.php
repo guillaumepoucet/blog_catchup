@@ -39,4 +39,12 @@ class ControleurPost {
             header('location:index.php?action=post&id='.$post_id);
         }
     }
+
+    public function getPosts() {
+        $posts = $this->post->getPosts();
+        $categories = $this->post->getCategories();
+        $vue = new Vue('PostList');
+        $vue->genererAdmin(array('posts' => $posts, 'categories' => $categories));
+    }
+
 }

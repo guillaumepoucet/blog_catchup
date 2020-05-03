@@ -57,5 +57,20 @@ class Post extends BDDRequest {
         $delete = $this->executeRequest($sql, array($post_id));
         return $delete;
     }
+
+    public function archivePost($post_id) {
+        $sql = 'UPDATE t_posts SET post_activated = ? WHERE post_id = ?';
+        $act = $this->executeRequest($sql, array('0', $post_id));
+        
+        $archive = $this->getPost(($post_id));
+        $date = date('Y-m-d H:i:s');
+        $sql = 'INSERT INTO t_post_archives (post_archive_date, user_id, post_id)
+                VALUES (:post_archive_date, :user_id, :post_id)';
+        $act = $this->executeRequest($sql, array(
+            'post_archive_date' => $date,
+            'user_id' => $archive['user_id'],
+            'post_id' => $post_id
+        ));
+    }
     
 }

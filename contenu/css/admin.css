@@ -146,10 +146,17 @@
 }
 
 /* Post list */
-.col-2 {
-    width: 440px;
+table .col-3,
+table .col-5 {
+    white-space: nowrap !important;
+}
+.archive  {
+    background-color: #9CCC65;
 }
 
-#postList tr td {
-    vertical-align: center;
+.archive:hover {
+    background-color: #67ad17;
 }
+.dt-body-nowrap {
+    white-space: nowrap;
+ }

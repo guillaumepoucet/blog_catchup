@@ -61,4 +61,9 @@ class ControleurPost
             header('location:index.php?action=admin&id=postlist');
         }
     }
+
+    public function archivePost($post_id)
+    {
+        $archive = $this->post->archivePost($post_id);
+    }
 }

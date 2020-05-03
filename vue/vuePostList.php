@@ -23,10 +23,10 @@
             <tr>
                 <th scope="col">#</th>
                 <th class="col-2" scope="col">Titre</th>
-                <th scope="col">Aperçu</th>
-                <th scope="col">Auteur</th>
+                <th class="col-3" scope="col">Auteur</th>
                 <th scope="col">Date d'édition</th>
-                <th scope="col">Catégories</th>
+                <th class="col-5" scope="col">Catégories</th>
+                <th scope="col">Archiver</th>
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
@@ -36,11 +36,10 @@
                     <th scope="row"><?php echo $i;
                                     $i++ ?></th>
                     <td><a href="index.php?action=post&id=<?=$post['post_id']?>"><?= $post['post_title']?></a></td>
-                    <td><?= $post['user_lastname'] ?></td>
-                    <td><?= $post['user_id'] ?></td>
+                    <td class="col-3"><?= $post['user_firstname'] . " " . $post['user_lastname'] ?></td>
                     <td><?= $post['post_date'] ?></td>
-                    <td>
-                        <form id="usertype" action="index.php?action=admin&id=editCategory" method="POST">
+                    <td class="col-5">
+                        <form id="category" action="index.php?action=admin&id=editCategory" method="POST">
                             <input type="hidden" name="category" value="<?= $user_id = $post['category_id'] ?>">
                             <select name="category_id" id="category_id">
                                 <option value="<?= $post['category_id'] ?>"><?= $post['category_name'] ?></option>
@@ -50,6 +49,9 @@
                             </select>
                             <button class="type-badge">Modifier</button>
                         </form>
+                    </td>
+                    <td>
+                        <center><a href="index.php?action=archivePost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg archive">Archiver</a></center>
                     </td>
                     <td>
                         <center><a href="index.php?action=deletePost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg">Supprimer</a></center>

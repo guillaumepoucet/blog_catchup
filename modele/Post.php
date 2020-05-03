@@ -8,12 +8,15 @@ class Post extends BDDRequest {
     public function getPosts() {
 
         $sql = 'SELECT  P.*,
-                        C.*
+                        C.*,
+                        U.user_id, U.user_firstname, U.user_lastname
                 FROM t_posts P
                 LEFT JOIN r_posseder R 
                     ON P.post_id = R.post_id
                 LEFT JOIN t_categories C 
-                    ON C.category_id = R.category_id';
+                    ON C.category_id = R.category_id
+                LEFT JOIN t_users U
+                    ON P.user_id = U.user_id';
         $posts = $this->executeRequest($sql);
         return $posts->fetchAll();
     }

@@ -270,7 +270,4 @@ class User extends BDDRequest
         }
     }
 
-    public function setUserPhoto($user_id)
-    {
-    }
 }

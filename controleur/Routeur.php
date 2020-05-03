@@ -22,7 +22,6 @@ class Routeur
     public function routeurRequete()
     {
         try {
-            $this->ctrlAccueil->getCategories();
             if (isset($_GET['action'])) {
                 if ($_GET['action'] == 'post') {
                     if (isset($_GET['id'])) {
@@ -69,6 +68,8 @@ class Routeur
                             throw new Exception(("Utilisateur non trouvé"));
                         } elseif ($_GET['id'] == 'aff') {
                             throw new Exception(("Action non autorisée'"));
+                        } elseif ($_GET['id'] == 'postlist') {
+                            $this->ctrlPost->getPosts();
                         } elseif ($_GET['id'] == 'userlist') {
                             // admin afficher la liste des membres
                             $this->ctrlUser->afficherListeUsers();
@@ -89,6 +90,7 @@ class Routeur
                     // renvoie la page admin
                     $this->ctrlUser->adminPage();
                 } elseif ($_GET['action'] == 'editUser') {
+                    // editer les infos d'un user
                     $user_id = intval($_GET['id']);
                     $this->ctrlUser->setInfoUser($user_id);
                 } elseif ($_GET['action'] == 'deconnection') {

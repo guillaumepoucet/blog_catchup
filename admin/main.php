@@ -48,16 +48,19 @@
 			<div class="row">
 				<!-- row -->
 				<div class="row admin-grid">
-					<img class="media-object profil-photo" src="<?= $_SESSION['photo'] ?>" alt="">
-					<h2>Bonjour <?= $_SESSION['firstname'] ?> !</h2>
+					<div class="profil-photo">
+						<a href="">
+							<img class="" src="<?= $_SESSION['photo'] ?>" alt="">
+							<img src="contenu\img\icons\camera-solid.svg" alt="">
+						</a>
+					</div>
+					<h2>Bonjour <?= $_SESSION['firstname'];?> !</h2>
 					<!-- aside -->
 					<div class="admin-aside">
 
-
 						<div>
 							<h4>Gérer mon profil</h4>
-							<a href="">Modifier mes informations</a>
-							<a href="">Changer ma photo de profil</a>
+							<a href="index.php?action=admin&edit=user&id=<?=$_SESSION['user_id']?>">Modifier mes informations</a>
 							<a href="">Supprimer mon profil</a>
 						</div>
 

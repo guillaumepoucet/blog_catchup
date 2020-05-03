@@ -19,7 +19,7 @@ class Routeur {
     // Traite une requête entrante
     public function routeurRequete() {
         try {
-            $categories = $this->ctrlAccueil->getCategories();
+            $this->ctrlAccueil->getCategories();
             if (isset($_GET['action'])) {
                 if ($_GET['action'] == 'post') {
                     if (isset($_GET['id'])) {
@@ -60,27 +60,45 @@ class Routeur {
                     // $pass = $this->getParametre($_POST, 'pass');
                     $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
                     $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;        
-                    $this->ctrlUser->login($login, $pass);
-                } elseif ($_GET['action'] == 'signin') {
+                    $this->ctrlUser->session($login, $pass);
+                } 
+                elseif ($_GET['action'] == 'signin') 
+                {
                     $this->ctrlUser->newUser();
-                } elseif ($_GET['action'] == 'admin') {
-                    if (isset($_GET['id'])) {
-                        if ($_GET['id'] == 'err') {
+                } 
+                elseif ($_GET['action'] == 'admin') 
+                {
+                    if 
+                    (isset($_GET['id'])) 
+                    {
+                        if ($_GET['id'] == 'err') 
+                        {
                             throw new Exception(("Utilisateur non trouvé"));
-                        } elseif ($_GET['id'] == 'aff') {
+                        } 
+                        elseif ($_GET['id'] == 'aff') 
+                        {
                             throw new Exception(("Action non autorisée'"));
-                        } elseif ($_GET['id'] == 'userlist') {
+                        } 
+                        elseif ($_GET['id'] == 'userlist') 
+                        {
                             // admin afficher la liste des membres
                             $this->ctrlUser->afficherListeUsers();
-                        } elseif ($_GET['id'] == 'editRole') {
+                        } 
+                        elseif ($_GET['id'] == 'editRole') {
                             // actualise la vue arès avoir changé le rôle d'un membre
                             $user_id = !empty($_POST['user_id']) ? $_POST['user_id'] : NULL;
                             $usertype_id = !empty($_POST['usertype_id']) ? $_POST['usertype_id'] : NULL;               
                             $this->ctrlUser->editRole($usertype_id, $user_id);
-                        } elseif (strpbrk($_GET['id'], 'deleteUser')) {
+                        }
+                         elseif (strpbrk($_GET['id'], 'deleteUser')) 
+                        {
                             // supprimer un membre
                             $user_id = str_replace('deleteUser', "", $_GET['id']);
                             $this->ctrlUser->deleteUser($user_id);
+                        } else
+                        {
+                            $user_id = intval($_GET['id']);
+                            $this->ctrlUser->viewInfoUser($user_id);
                         }
                     }
                     // renvoie la page admin

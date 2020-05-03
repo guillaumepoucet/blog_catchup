@@ -34,7 +34,8 @@
 <body>
 
 	<!-- Header -->
-	<?php include('contenu/header.php') ?>
+	<!-- <?php $navbar ?> -->
+	<?php include('contenu/header.php')?>
 	<!-- /Header -->
 
 	<!-- section -->

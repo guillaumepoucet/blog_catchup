@@ -40,7 +40,7 @@
                         mail.</small>
                 </div>
                 <div class="form-group">
-                    <label for="pass">Password</label>
+                    <label for="pass">Mot de passe</label>
                     <input type="password" class="form-control" name="pass" placeholder="Mot de passe">
                 </div>
                 <div class="form-group">

@@ -18,8 +18,9 @@ class ControleurPost {
     public function post($post_id) {
         $post = $this->post->getPost($post_id);
         $comments = $this->comment->getComments($post_id);
+        $totalcomments = count($comments);
         $vue = new Vue("Post");
-        $vue->generer(array('post' => $post, 'comments' => $comments));
+        $vue->generer(array('post' => $post, 'comments' => $comments, 'totalcomments' => $totalcomments));
     }
 
     public function addComment($post_id) {

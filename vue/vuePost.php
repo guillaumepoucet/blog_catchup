@@ -100,7 +100,7 @@
 				<!-- comments -->
 				<div class="section-row">
 					<div class="section-title">
-						<h2>3 Comments</h2>
+						<h2><?= $totalcomments?> Commentaires</h2>
 					</div>
 
 					<div class="post-comments">

@@ -50,7 +50,12 @@ class Post extends BDDRequest {
         $sql = 'SELECT * FROM t_categories';
         $categories = $this->executeRequest($sql);
         return $categories->fetchAll();
-        throw new Exception ($categories);
+    }
+
+    public function deletePost($post_id) {
+        $sql = 'DELETE FROM t_posts WHERE post_id = ?';
+        $delete = $this->executeRequest($sql, array($post_id));
+        return $delete;
     }
     
 }

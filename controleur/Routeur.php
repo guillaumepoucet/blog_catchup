@@ -89,6 +89,10 @@ class Routeur
                     }
                     // renvoie la page admin
                     $this->ctrlUser->adminPage();
+                } elseif ($_GET['action'] == 'deletePost') {
+                    // supprimer un article
+                    $post_id = ($_GET['id']);
+                    $this->ctrlPost->deletePost($post_id);
                 } elseif ($_GET['action'] == 'editUser') {
                     // editer les infos d'un user
                     $user_id = intval($_GET['id']);

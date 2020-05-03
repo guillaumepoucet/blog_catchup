@@ -144,3 +144,12 @@
 .nav-page {
     text-align: center;
 }
+
+/* Post list */
+.col-2 {
+    width: 440px;
+}
+
+#postList tr td {
+    vertical-align: center;
+}

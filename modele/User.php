@@ -36,9 +36,7 @@ class User extends BDDRequest
 
     public function session($login, $pass)
     {
-
-
-        $sql = 'SELECT U.user_id, U.user_login, U.user_pass
+        $sql = 'SELECT U.user_login, U.user_pass
                 FROM t_users U
                 WHERE user_login = ?';
 
@@ -47,8 +45,7 @@ class User extends BDDRequest
         $count = $connectUser->rowCount();
 
         if ($count > 0) {
-            $user_id = $count['user_id'];
-            $user = $this->getUser($user_id);
+            $user = $this->getUser($login);
             $mdpval = password_verify($pass, $user['user_pass']);
             if ($mdpval) {
                 $_SESSION['user_id'] = $user['user_id'];
@@ -67,17 +64,19 @@ class User extends BDDRequest
         }
     }
 
-    public function getUser($user_id)
+    public function getUser($login)
     {
-
         $sql = 'SELECT U.*
                 FROM t_users U
-                WHERE U.user_id = ?';
-        $user = $this->executeRequest($sql, array($user_id));
+                WHERE U.user_login = ?';
+        $user = $this->executeRequest($sql, array($login));
 
-        if ($user->rowCount() == 1) {
+        $count = $user->rowCount();
+        // echo $count ;exit();
+
+        if ($count == 1) {
             return $user->fetch();
-        } 
+        }
     }
 
     public function logout()
@@ -144,33 +143,33 @@ class User extends BDDRequest
         return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
     }
 
-    public function confirm($user_id, $token)
-    {
+    // public function confirm($user_id, $token)
+    // {
 
-        $user_id = !empty($_GET['id']) ? $_GET['id'] : NULL;
-        $token = !empty($_GET['token']) ? $_GET['token'] : NULL;
+    //     $user_id = !empty($_GET['id']) ? $_GET['id'] : NULL;
+    //     $token = !empty($_GET['token']) ? $_GET['token'] : NULL;
 
-        $connexion = new Database('localhost', 'poo', 'root', '');
-        $bdd = $connexion->PDOConnexion();
+    //     $connexion = new Database('localhost', 'poo', 'root', '');
+    //     $bdd = $connexion->PDOConnexion();
 
-        $req = $bdd->prepare('  SELECT * FROM user WHERE id_user = ?');
-        $req->execute([$user_id]);
+    //     $req = $bdd->prepare('  SELECT * FROM user WHERE id_user = ?');
+    //     $req->execute([$user_id]);
 
-        $user = $req->fetch();
+    //     $user = $req->fetch();
 
-        $same = strcmp($token, $user['$token']);
+    //     $same = strcmp($token, $user['$token']);
 
-        if ($same == 60) {
-            $confirmation = $bdd->prepare(' UPDATE user 
-                                            SET confirmed = ?
-                                            WHERE id_user = ?');
-            $confirmation->execute(array(1, $user_id));
-            session_start();
-            header('location:../index.php?=confirm=ok');
-        } else {
-            header('location:../index.php?confirm=error');
-        }
-    }
+    //     if ($same == 60) {
+    //         $confirmation = $bdd->prepare(' UPDATE user 
+    //                                         SET confirmed = ?
+    //                                         WHERE id_user = ?');
+    //         $confirmation->execute(array(1, $user_id));
+    //         session_start();
+    //         header('location:../index.php?=confirm=ok');
+    //     } else {
+    //         header('location:../index.php?confirm=error');
+    //     }
+    // }
 
     public function deleteUser($user_id)
     {
@@ -199,7 +198,7 @@ class User extends BDDRequest
 
         if (!empty($firstname)) {
             $sql = 'UPDATE t_users SET user_firstname = ? WHERE user_id =' . $user_id;
-            $edit = $this->executeRequest($sql, array($firstname));
+            $this->executeRequest($sql, array($firstname));
         }
 
         if (!empty($lastname)) {
@@ -223,12 +222,55 @@ class User extends BDDRequest
         };
 
         // checking if both password are the same
-        $same = strcmp($pass, $pass2);
-        if ($same == 0) {
+        if (!empty($mail)) {
+            $same = strcmp($pass, $pass2);
+            if ($same == 0) {
 
-            $pass = password_hash($pass, PASSWORD_DEFAULT);
-            $sql = 'UPDATE t_users SET user_pass = ? WHERE user_id =' . $user_id;
-            $this->executeRequest($sql, array($description));
-        };
+                $pass = password_hash($pass, PASSWORD_DEFAULT);
+                $sql = 'UPDATE t_users SET user_pass = ? WHERE user_id =' . $user_id;
+                $this->executeRequest($sql, array($pass));
+            }
+        }
+
+        if (!empty($_FILES['photo']['name'])) {
+            // $photo = null;
+            // $sql = 'SELECT user_photo_url FROM t_users WHERE user_id ='.$user_id;
+            // $photo = $this->executeRequest($sql);
+
+            // $photo = $photo->fetchColumn();
+            // $photo = "..\\".$photo;
+
+            // if(!empty($photo) && ($photo != "..\\")) 
+            // {
+            //     unlink($photo);
+            // }
+
+            // we get the photo directory
+            $portrait_dir = "contenu\img\\";
+            $portrait_file = basename($_FILES["photo"]["name"]);
+            $targetPortraitPath = $portrait_dir . $portrait_file;
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($portrait_file, PATHINFO_EXTENSION));
+
+            // Allowing certain file formats
+            if (
+                $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif"
+            ) {
+                echo "Désolé, seulement les fichiers JPG, JPEG, PNG & GIF sont acceptés.";
+                $uploadOk = 0;
+            }
+
+            $sql = 'UPDATE t_users SET user_photo_url = ? WHERE user_id =' . $user_id;
+            $this->executeRequest($sql, array($targetPortraitPath));
+
+            // move_uploaded_file($_FILES["portrait"]["tmp_name"], "..\\".$targetPortraitPath);
+
+            $_SESSION['user_photo_url'] = $targetPortraitPath;
+        }
+    }
+
+    public function setUserPhoto($user_id)
+    {
     }
 }

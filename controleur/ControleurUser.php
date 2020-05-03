@@ -70,9 +70,10 @@ class ControleurUser
         }
     }
 
-    public function viewInfoUser($user_id)
+    public function viewInfoUser($login)
     {
-        $userInfo = $this->user->getUser($user_id);
+        
+        $userInfo = $this->user->getUser($login);
         $vue = new Vue("InfoUser");
         $vue->genererAdmin(array('user' => $userInfo));
     }
@@ -81,7 +82,7 @@ class ControleurUser
     {
         $set = $this->user->setInfoUSer($user_id);
         $_SESSION['set'] = 'ok';
-        $this->viewInfoUser($user_id);
-   
+        var_dump($_SESSION);
+        $this->viewInfoUser($_SESSION['login']);
     }
 }

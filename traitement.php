@@ -8,18 +8,23 @@ $pass = "";
 $bdd = new PDO('mysql:host=localhost;dbname=catchup;charset=utf8', $user, $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 
-$comment_content = !empty($_POST['comment']) ? $_POST['comment'] : NULL;
-$post_id = !empty($_POST['post_id']) ? $_POST['post_id'] : NULL;
-$user_id = $_SESSION['user_id'];
-$comment_date = date('Y-m-d H:i:s');
+$portrait_dir = "contenu\img\\";
+$portrait_file = basename($_FILES["photo"]["name"]);
+$targetPortraitPath = $portrait_dir . $portrait_file;
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($portrait_file, PATHINFO_EXTENSION));
 
-$sql = $bdd->prepare('INSERT INTO t_comments (comment_content, comment_date, post_id, user_id)
-        VALUES (:comment_content, :comment_date, :post_id, :user_id)');
+// Allowing certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) 
+{
+    echo "Désolé, seulement les fichiers JPG, JPEG, PNG & GIF sont acceptés.";
+    $uploadOk = 0;
+}
 
+$sql =$bdd -> prepare('UPDATE t_users SET user_photo_url = ? WHERE user_id = 1');
+$sql->execute(array($targetPortraitPath));
 
-$sql->execute(array(
-    'comment_content' => $comment_content,
-    'comment_date' => $comment_date,
-    'post_id' => $post_id,
-    'user_id' => $user_id
-));
+$_SESSION['user_photo_url'] = $targetPortraitPath;
+
+// move_uploaded_file($_FILES["portrait"]["tmp_name"], "..\\".$targetPortraitPath);

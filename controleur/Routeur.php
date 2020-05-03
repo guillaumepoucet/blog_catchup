@@ -58,9 +58,6 @@ class Routeur
                         }
                     }
                 } elseif ($_GET['action'] == 'login') {
-                    // var_dump($_POST['login']); exit;
-                    // $login = $this->getParametre($_POST, 'login');
-                    // $pass = $this->getParametre($_POST, 'pass');
                     $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
                     $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;
                     $this->ctrlUser->session($login, $pass);
@@ -85,8 +82,8 @@ class Routeur
                             $user_id = str_replace('deleteUser', "", $_GET['id']);
                             $this->ctrlUser->deleteUser($user_id);
                         } else {
-                            $user_id = intval($_GET['id']);
-                            $this->ctrlUser->viewInfoUser($user_id);
+                            $login = $_SESSION['login'];
+                            $this->ctrlUser->viewInfoUser($login);
                         }
                     }
                     // renvoie la page admin

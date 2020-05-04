@@ -65,10 +65,10 @@
                     <input type="password" class="form-control" id="pass" name="pass" placeholder="Votre mot de passe">
                 </div>
 
-                <div class="form-check">
+                <!-- <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
-                </div>
+                </div> -->
 
                 <button type="submit" class="btn btn-primary">Me connecter</button>
 

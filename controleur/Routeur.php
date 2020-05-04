@@ -60,6 +60,8 @@ class Routeur
                     $login = !empty($_POST['login']) ? $_POST['login'] : NULL;
                     $pass = !empty($_POST['pass']) ? $_POST['pass'] : NULL;
                     $this->ctrlUser->session($login, $pass);
+                } elseif ($_GET['action'] == 'newPost') {
+                    $this->ctrlPost->newPost();
                 } elseif ($_GET['action'] == 'signin') {
                     $this->ctrlUser->newUser();
                 } elseif ($_GET['action'] == 'admin') {

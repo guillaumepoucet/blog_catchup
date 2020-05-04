@@ -31,7 +31,7 @@ class ControleurUser
     public function adminPage()
     {
         $vue = new Vue("Admin");
-        $vue->genereradmin(array('admin'));
+        $vue->genereradmin(array());
     }
 
     public function logout()

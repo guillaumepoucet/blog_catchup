@@ -80,13 +80,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition : 0.1s;
+    transition: 0.1s;
     width: 2em;
     padding: 50px;
     box-sizing: content-box;
     border-radius: 42%;
     opacity: 0;
-  
+
 }
 
 .profil-photo img:nth-of-type(even):hover {
@@ -150,13 +150,15 @@ table .col-3,
 table .col-5 {
     white-space: nowrap !important;
 }
-.archive  {
+
+.archive {
     background-color: #9CCC65;
 }
 
 .archive:hover {
     background-color: #67ad17;
 }
+
 .dt-body-nowrap {
     white-space: nowrap;
- }
+}

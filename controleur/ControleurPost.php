@@ -82,4 +82,9 @@ class ControleurPost
         $vue = new Vue("ArchiveList");
         $vue->genererAdmin(array('archives' => $archives));
     }
+
+    public function newPost() {
+        $vue = new Vue("NewPost");
+        $vue->genererAdmin(array());
+    }
 }

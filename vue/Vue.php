@@ -52,10 +52,6 @@ class Vue {
         }
     }
 
-    private function getNavbar() {
-
-    }
-
 }
 
 ?>

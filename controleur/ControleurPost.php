@@ -36,6 +36,24 @@ class ControleurPost
         }
     }
 
+    public function archiveComment($comment_id, $post_id)
+    {
+        $archive = $this->comment->archiveComment($comment_id);
+        if ($archive) {
+            $_SESSION['comment'] = 'archiveOk';
+            header('location:index.php?action=post&id=' . $post_id);
+        }
+    }
+
+    public function deleteArchiveComment($comment_id)
+    {
+        $delete = $this->comment->deleteArchiveComment($comment_id);
+        if ($delete) {
+            $_SESSION['comment'] = 'deleteOk';
+            header('location:index.php?action=admin&id=comments');
+        }
+    }
+
     public function deleteComment($comment_id, $post_id)
     {
         $delete = $this->comment->deleteComment($comment_id);
@@ -93,4 +111,11 @@ class ControleurPost
         $vue = new Vue("EditPost");
         $vue->genererAdmin(array('post' => $post));
     }
+
+    public function getArchiveComments() {
+        $archives = $this->comment->getArchiveComments();
+        $vue = new Vue("ArchiveComment");
+        $vue->genererAdmin(array('archives' => $archives));
+    }
+
 }

@@ -10,8 +10,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
-				
-				
+
+
 				<div class="post-meta">
 					<a class="post-category cat-2" href="category.html">JavaScript</a>
 					<span class="post-date"><?= $post['post_date'] ?></span>
@@ -30,17 +30,17 @@
 		<div class="row">
 			<!-- Post content -->
 			<div class="col-md-8">
-				<?php if(isset($_SESSION['comment']) && ($_SESSION['comment'] == 'deleteOk')): ?>
+				<?php if (isset($_SESSION['comment']) && ($_SESSION['comment'] == 'deleteOk')) : ?>
 					<div class="row">
-				<div class="col-md-8 alert alert-danger alert-dismissible show" role="alert">
-					<strong>Commentaire supprimé.</strong>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				</div>
+						<div class="col-md-8 alert alert-danger alert-dismissible show" role="alert">
+							<strong>Commentaire supprimé.</strong>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
 				<?php endif ?>
-				<?php unset($_SESSION['comment']);?>
+				<?php unset($_SESSION['comment']); ?>
 				<div class="section-row sticky-container">
 					<div class="main-post">
 						<?= $post['post_content'] ?>
@@ -88,42 +88,41 @@
 				</div>
 				<!-- /author -->
 
-				<?php if(!isset($_SESSION['type'])):?>
-				<div class="section-row">
-					<div class="section-title">
-						<p class="alert-comment"><a href="index.php?action=connection">Connectez-vous</a> pour laisser
-							un commentaire !</p>
+				<?php if (!isset($_SESSION['type'])) : ?>
+					<div class="section-row">
+						<div class="section-title">
+							<p class="alert-comment"><a href="index.php?action=connection">Connectez-vous</a> pour laisser
+								un commentaire !</p>
+						</div>
 					</div>
-				</div>
 				<?php endif ?>
 
 				<!-- comments -->
 				<div class="section-row">
 					<div class="section-title">
-						<h2><?= $totalcomments?> Commentaires</h2>
+						<h2><?= $totalcomments ?> Commentaires</h2>
 					</div>
 
 					<div class="post-comments">
 						<!-- comment -->
-						<?php foreach($comments as $comment): ?>
-						<div class="media">
-							<div class="media-left">
-								<img class="media-object" src="<?= $comment['user_photo_url'] ?>" alt="">
-							</div>
-							<div class="media-body">
-								<div class="media-heading">
-									<h4><?= $comment['user_firstname'] . " " . $comment['user_lastname'] ?></h4>
-									<span
-										class="time"><?= strftime('%d %b. %Y, %R', strtotime($comment['comment_date'])) ?></span>
-									<?php if(isset($_SESSION['type']) &&  $_SESSION['type']!== 3): ?>
-									<a href="index.php?action=deleteComment&id=<?= $comment['comment_id']?>&post_id=<?=$post['post_id']?>"
-										class="reply delete">Supprimer</a>
-									<?php endif ?>
+						<?php foreach ($comments as $comment) : ?>
+							<div class="media">
+								<div class="media-left">
+									<img class="media-object" src="<?= $comment['user_photo_url'] ?>" alt="">
 								</div>
-								<p><?= $comment['comment_content'] ?>
-								</p>
+								<div class="media-body">
+									<div class="media-heading">
+										<h4><?= $comment['user_firstname'] . " " . $comment['user_lastname'] ?></h4>
+										<span class="time"><?= strftime('%d %b. %Y, %R', strtotime($comment['comment_date'])) ?></span>
+										<?php if (isset($_SESSION['type']) &&  $_SESSION['type'] !== 3) : ?>
+											<a href="index.php?action=archiveComment&id=<?= $comment['comment_id'] ?>&post_id=<?= $post['post_id'] ?>" class="reply archive">Archiver</a>
+											<a href="index.php?action=deleteComment&id=<?= $comment['comment_id'] ?>&post_id=<?= $post['post_id'] ?>" class="reply delete">Supprimer</a>
+										<?php endif ?>
+									</div>
+									<p><?= $comment['comment_content'] ?>
+									</p>
+								</div>
 							</div>
-						</div>
 						<?php endforeach ?>
 						<!-- /comment -->
 					</div>
@@ -133,24 +132,23 @@
 
 				<!-- reply -->
 
-				<?php if(isset($_SESSION['type'])):?>
-				<div class="section-row">
-					<div class="section-title">
-						<h2>Laisser un commentaire</h2>
-					</div>
-					<form class="post-reply" action="index.php?action=addComment&id=<?= $post_id = $_GET['id']?>"
-						method="POST">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<input type="hidden" name="post_id" value="">
-									<textarea class="input" name="comment" placeholder="Votre commentaire"></textarea>
-								</div>
-								<button class="primary-button">Envoyer</button>
-							</div>
+				<?php if (isset($_SESSION['type'])) : ?>
+					<div class="section-row">
+						<div class="section-title">
+							<h2>Laisser un commentaire</h2>
 						</div>
-					</form>
-				</div>
+						<form class="post-reply" action="index.php?action=addComment&id=<?= $post_id = $_GET['id'] ?>" method="POST">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="hidden" name="post_id" value="">
+										<textarea class="input" name="comment" placeholder="Votre commentaire"></textarea>
+									</div>
+									<button class="primary-button">Envoyer</button>
+								</div>
+							</div>
+						</form>
+					</div>
 				<?php endif ?>
 				<!-- /reply -->
 

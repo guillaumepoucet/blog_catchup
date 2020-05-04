@@ -13,6 +13,13 @@
     font-size: 1.2em;
 }
 
+.archive {
+    color: #9CCC65 !important;
+}
+.archive:hover {
+    color: #67ad17 !important;
+}
+
 /* admin */
 .form .register-form {
     display: none;
@@ -151,11 +158,11 @@ table .col-5 {
     white-space: nowrap !important;
 }
 
-.archive {
+.archive-btn {
     background-color: #9CCC65;
 }
 
-.archive:hover {
+.archive-btn:hover {
     background-color: #67ad17;
 }
 

@@ -1,13 +1,15 @@
-<?php $this->title = 'Liste des articles archivés - Catchup Blog' ?>
+<?php $this->title = 'Liste des commentaires archivés - Catchup Blog' ?>
 
 <!-- Compteur tableau -->
 <?php $i = 1 ?>
+
+<h3>Liste des commentaires archivés</h3>
 
 <div class="row">
 
     <?php if (isset($_SESSION['delete']) && ($_SESSION['delete'] == 'Ok')) : ?>
         <div class="col-md-12 alert alert-danger alert-dismissible show" role="alert">
-            <strong>Article supprimé.</strong>
+            <strong>Commentaire supprimé.</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -15,15 +17,11 @@
     <?php endif ?>
     <?php unset($_SESSION['delete']); ?>
 
-    <div class="col-md-12 alert alert-warning" role="alert">
-        <p>Pour afficher un article, cliquez sur son titre.</p>
-    </div>
-    
     <table id="postList" class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th class="col-2" scope="col">Titre</th>
+                <th class="col-2" scope="col">Commentaire</th>
                 <th scope="col">Date d'archivage</th>
                 <th scope="col">Archivé par</th>
                 <th scope="col">Supprimer</th>
@@ -35,11 +33,11 @@
                 <tr>
                     <th scope="row"><?php echo $i;
                                     $i++ ?></th>
-                    <td><a href="index.php?action=post&id=<?= $archive['post_id'] ?>"><?= $archive['post_title'] ?></a></td>
-                    <td><?= $archive['post_archive_date'] ?></td>
+                    <td><?= $archive['comment_content'] ?></td>
+                    <td><?= $archive['comment_archive_date'] ?></td>
                     <td><?= $archive['user_firstname'] . " " . $archive['user_lastname']?></td>
                     <td>
-                        <center><a href="index.php?action=deletePost&id=<?=$archive['post_id']?>" class="type-badge delete-bg">Supprimer</a></center>
+                        <center><a href="index.php?action=deleteArchComment&id=<?=$archive['comment_id']?>" class="type-badge delete-bg">Supprimer</a></center>
                     </td>
                 </tr>
             <?php endforeach ?>

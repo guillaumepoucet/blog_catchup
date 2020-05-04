@@ -71,8 +71,9 @@
 								<div>
 									<h4>Gérer les articles</h4>
 									<a href="index.php?action=admin&id=postlist">Liste des articles</a>
-									<a href="index.php?action=admin&id=archives">Archives des articles</a>
+									<a href="index.php?action=admin&id=archives">Articles archivés</a>
 									<a href="index.php?action=newPost">Rédiger un article</a>
+									<a href="index.php?action=admin&id=comments">Commentaires archivés</a>
 								</div>
 								<div>
 									<h4>Gérer les utilisateurs</h4>
@@ -118,13 +119,13 @@
 				<script src="contenu\pell-master\dist\pell.js"></script>
 				<script>
 					var editor = window.pell.init({
-								element: document.getElementById('editor'),
-								defaultParagraphSeparator: 'p',
-								onChange: function(html) {
-									document.getElementById('text-output').innerHTML = html
-									document.getElementById('html-output').textContent = html
-								}
-								})
+						element: document.getElementById('editor'),
+						defaultParagraphSeparator: 'p',
+						onChange: function(html) {
+							document.getElementById('text-output').innerHTML = html
+							document.getElementById('html-output').textContent = html
+						}
+					})
 				</script>
 			<?php endif ?>
 

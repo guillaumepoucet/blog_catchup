@@ -74,6 +74,8 @@ class Routeur
                             $this->ctrlPost->getPosts();
                         } elseif ($_GET['id'] == 'archives') {
                             $this->ctrlPost->getArchivePosts();
+                        } elseif ($_GET['id'] == 'comments') {
+                            $this->ctrlPost->getArchiveComments();
                         } elseif ($_GET['id'] == 'userlist') {
                             // admin afficher la liste des membres
                             $this->ctrlUser->afficherListeUsers();
@@ -102,6 +104,10 @@ class Routeur
                     // supprimer un article
                     $post_id = ($_GET['id']);
                     $this->ctrlPost->deletePost($post_id);
+                } elseif ($_GET['action'] == 'deleteArchComment') {
+                    // supprimer un article
+                    $comment_id = ($_GET['id']);
+                    $this->ctrlPost->deleteArchiveComment($comment_id);
                 } elseif ($_GET['action'] == 'editPost') {
                     // editer un article
                     $post_id = ($_GET['id']);
@@ -110,6 +116,11 @@ class Routeur
                     // supprimer un article
                     $post_id = ($_GET['id']);
                     $this->ctrlPost->archivePost($post_id);
+                } elseif ($_GET['action'] == 'archiveComment') {
+                    // archiver un commentaire
+                    $comment_id = ($_GET['id']);
+                    $post_id = ($_GET['post_id']);
+                    $this->ctrlPost->archiveComment($comment_id, $post_id);
                 } elseif ($_GET['action'] == 'editUser') {
                     // editer les infos d'un user
                     $user_id = intval($_GET['id']);

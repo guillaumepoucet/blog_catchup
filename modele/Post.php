@@ -59,9 +59,16 @@ class Post extends BDDRequest
 
     public function deletePost($post_id)
     {
-        $sql = 'DELETE FROM t_posts WHERE post_id = ?';
-        $delete = $this->executeRequest($sql, array($post_id));
-        return $delete;
+        $sql = 'DELETE FROM t_comments WHERE post_id = ?';
+        $comments = $this->executeRequest($sql, array($post_id));
+        
+        if($comments) {
+            $sql = 'DELETE FROM t_posts WHERE post_id = ?';
+            $deletePost = $this->executeRequest($sql, array($post_id));
+            return $deletePost;
+        } else {
+            throw new Exception("Les commentaires n'ont pas pu être supprimés.");
+        } 
     }
 
     public function archivePost($post_id)
@@ -75,7 +82,7 @@ class Post extends BDDRequest
                 VALUES (:post_archive_date, :user_id, :post_id)';
         $act = $this->executeRequest($sql, array(
             'post_archive_date' => $date,
-            'user_id' => $archive['user_id'],
+            'user_id' => $_SESSION['user_id'],
             'post_id' => $post_id
         ));
         return $act;
@@ -92,11 +99,18 @@ class Post extends BDDRequest
 
     public function getArchivePosts() {
         $sql = 'SELECT  A.*,
-                        P.* 
+                        P.*,
+                        U.user_lastname, U.user_firstname
                 FROM t_post_archives A
                 LEFT JOIN t_posts P 
-                    ON P.post_id = A.post_id';
+                    ON P.post_id = A.post_id
+                LEFT JOIN t_users U 
+                    ON A.user_id = U.user_id';
         $archives = $this->executeRequest($sql);
         return $archives->fetchAll();
+    }
+
+    public function getPostId() {
+
     }
 }

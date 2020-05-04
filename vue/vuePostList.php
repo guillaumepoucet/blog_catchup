@@ -1,4 +1,4 @@
-<?php $this->title = 'List des articles - Catchup Blog' ?>
+<?php $this->title = 'Liste des articles - Catchup Blog' ?>
 
 <!-- Compteur tableau -->
 <?php $i = 1 ?>
@@ -65,7 +65,7 @@
                         <center><a href="index.php?action=editPost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg edit">Éditer</a></center>
                     </td>
                     <td>
-                        <center><a href="index.php?action=archivePost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg archive">Archiver</a></center>
+                        <center><a href="index.php?action=archivePost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg archive-btn">Archiver</a></center>
                     </td>
                     <td>
                         <center><a href="index.php?action=deletePost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg">Supprimer</a></center>

@@ -87,4 +87,10 @@ class ControleurPost
         $vue = new Vue("NewPost");
         $vue->genererAdmin(array());
     }
+
+    public function editPost($post_id) {
+        $post = $this->post->getPost($post_id);
+        $vue = new Vue("EditPost");
+        $vue->genererAdmin(array('post' => $post));
+    }
 }

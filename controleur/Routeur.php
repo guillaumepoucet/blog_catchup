@@ -102,6 +102,10 @@ class Routeur
                     // supprimer un article
                     $post_id = ($_GET['id']);
                     $this->ctrlPost->deletePost($post_id);
+                } elseif ($_GET['action'] == 'editPost') {
+                    // editer un article
+                    $post_id = ($_GET['id']);
+                    $this->ctrlPost->editPost($post_id);
                 } elseif ($_GET['action'] == 'archivePost') {
                     // supprimer un article
                     $post_id = ($_GET['id']);

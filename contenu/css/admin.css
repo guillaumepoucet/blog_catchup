@@ -159,6 +159,14 @@ table .col-5 {
     background-color: #67ad17;
 }
 
+.edit {
+    background-color: #42a5f5;
+}
+
+.edit:hover {
+    background-color: #1565c0;
+}
+
 .dt-body-nowrap {
     white-space: nowrap;
 }

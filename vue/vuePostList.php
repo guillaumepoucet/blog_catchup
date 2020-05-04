@@ -36,8 +36,9 @@
                 <th class="col-3" scope="col">Auteur</th>
                 <th scope="col">Date d'édition</th>
                 <th class="col-5" scope="col">Catégories</th>
-                <th scope="col">Archiver</th>
-                <th scope="col">Supprimer</th>
+                <th scope="col"><center>Éditer</center></th>
+                <th scope="col"><center>Archiver</center></th>
+                <th scope="col"><center>Supprimer</center></th>
             </tr>
         </thead>
         <tbody class="table-striped">
@@ -59,6 +60,9 @@
                             </select>
                             <button class="type-badge">Modifier</button>
                         </form>
+                    </td>
+                    <td>
+                        <center><a href="index.php?action=editPost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg edit">Éditer</a></center>
                     </td>
                     <td>
                         <center><a href="index.php?action=archivePost&id=<?= $post['post_id'] ?>" class="type-badge delete-bg archive">Archiver</a></center>

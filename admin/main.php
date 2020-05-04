@@ -117,7 +117,7 @@
 		<script src="contenu/js/admin.js"></script>
 		<script src="contenu/js/postList.js"></script>
 		<script src="contenu/js/userList.js"></script>
-		<?php if(isset($_GET['action']) && ($_GET['action'] == 'newPost')): ?>
+		<?php if(isset($_GET['action']) && ($_GET['action'] == 'newPost') || ($_GET['action'] == 'editPost')): ?>
 		<script src="contenu\pell-master\dist\pell.js"></script>
 		<script>
 			var editor = window.pell.init({

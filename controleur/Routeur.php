@@ -116,6 +116,10 @@ class Routeur
                     // supprimer un article
                     $post_id = ($_GET['id']);
                     $this->ctrlPost->archivePost($post_id);
+                } elseif ($_GET['action'] == 'reactPost') {
+                    // reactiver un article
+                    $post_id = ($_GET['id']);
+                    $this->ctrlPost->reactivePost($post_id);
                 } elseif ($_GET['action'] == 'archiveComment') {
                     // archiver un commentaire
                     $comment_id = ($_GET['id']);

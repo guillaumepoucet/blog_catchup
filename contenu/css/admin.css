@@ -154,6 +154,7 @@
 
 /* Post list */
 table .col-3,
+table .col-4,
 table .col-5 {
     white-space: nowrap !important;
 }

@@ -79,6 +79,18 @@ class Post extends BDDRequest
         return $act;
     }
 
+    public function reactivePost($post_id) {
+        $sql = 'DELETE FROM t_post_archives WHERE post_id = ?';
+        $delete = $this->executeRequest($sql, array($post_id));
+        if ($delete) {
+            $sql = 'UPDATE t_posts SET post_activated = 1 WHERE post_id = ?';
+            $reactivation = $this->executeRequest($sql, array($post_id));
+            return $reactivation;
+        } else {
+            throw new exception ("L'article n'a pu être réactivé.");
+        }
+    }
+
     public function setCategory($post_id, $category_id)
     {
         $sql = 'UPDATE t_posts

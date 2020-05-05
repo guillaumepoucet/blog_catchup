@@ -99,6 +99,15 @@ class ControleurPost
         }
     }
 
+    public function reactivePost($post_id)
+    {
+        $reactivation = $this->post->reactivePost($post_id);
+        if ($reactivation) {
+            $_SESSION['archive'] = 'Ok';
+            header('location:index.php?action=admin&id=archives');
+        }
+    }
+
     public function editCategory($post_id, $category_id) {
         $edition = $this->post->setCategory($post_id, $category_id);
         if ($edition) {

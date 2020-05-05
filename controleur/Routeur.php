@@ -93,13 +93,14 @@ class Routeur
                             // supprimer un membre
                             $user_id = str_replace('deleteUser', "", $_GET['id']);
                             $this->ctrlUser->deleteUser($user_id);
-                        } else {
+                        } elseif (!isset($_GET['id'])) {
                             $login = $_SESSION['login'];
                             $this->ctrlUser->viewInfoUser($login);
                         }
+                    } elseif (empty($_GET['id'])) {
+                        // renvoie la page admin
+                        $this->ctrlUser->adminPage();
                     }
-                    // renvoie la page admin
-                    $this->ctrlUser->adminPage();
                 } elseif ($_GET['action'] == 'deletePost') {
                     // supprimer un article
                     $post_id = ($_GET['id']);

@@ -64,7 +64,7 @@
 								<h4>Gérer mon profil</h4>
 								<a href="index.php?action=admin&edit=user&id=<?= $_SESSION['user_id'] ?>">Modifier mes
 									informations</a>
-								<a href="">Supprimer mon profil</a>
+								<!-- <a href="">Supprimer mon profil</a> -->
 							</div>
 
 							<?php if ($_SESSION['type'] == 1) : ?>

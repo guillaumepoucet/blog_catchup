@@ -13,10 +13,8 @@ class Post extends BDDRequest
                         C.*,
                         U.user_id, U.user_firstname, U.user_lastname
                 FROM t_posts P
-                LEFT JOIN r_posseder R 
-                    ON P.post_id = R.post_id
                 LEFT JOIN t_categories C 
-                    ON C.category_id = R.category_id
+                    ON C.category_id = P.category_id_fk
                 LEFT JOIN t_users U
                     ON P.user_id = U.user_id
                 WHERE post_activated = 1';
@@ -83,9 +81,9 @@ class Post extends BDDRequest
 
     public function setCategory($post_id, $category_id)
     {
-        $sql = 'UPDATE r_posseder R
-                SET R.category_id = ?
-                WHERE R.post_id = ?';
+        $sql = 'UPDATE t_posts
+                SET category_id_fk = ?
+                WHERE post_id = ?';
         $edit = $this->executeRequest($sql, array($category_id, $post_id));
         return $edit;
     }

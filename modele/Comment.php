@@ -55,6 +55,14 @@ class Comment extends BDDRequest
         return $comment;
     }
 
+    public function deleteAllComments($post_id) 
+    {
+        $sql = 'DELETE FROM t_comments WHERE post_id = ?';
+        $comment = $this->executeRequest($sql, array($post_id));
+
+        return $comment;
+    }
+
     public function archiveComment($comment_id)
     {
         $sql = 'UPDATE t_comments SET comment_activated = 0 WHERE comment_id = ?';

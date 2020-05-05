@@ -59,16 +59,9 @@ class Post extends BDDRequest
 
     public function deletePost($post_id)
     {
-        $sql = 'DELETE FROM t_comments WHERE post_id = ?';
-        $comments = $this->executeRequest($sql, array($post_id));
-        
-        if($comments) {
-            $sql = 'DELETE FROM t_posts WHERE post_id = ?';
-            $deletePost = $this->executeRequest($sql, array($post_id));
-            return $deletePost;
-        } else {
-            throw new Exception("Les commentaires n'ont pas pu être supprimés.");
-        } 
+        $sql = 'DELETE FROM t_posts WHERE post_id = ?';
+        $deletePost = $this->executeRequest($sql, array($post_id));
+        return $deletePost;
     }
 
     public function archivePost($post_id)
@@ -97,7 +90,8 @@ class Post extends BDDRequest
         return $edit;
     }
 
-    public function getArchivePosts() {
+    public function getArchivePosts()
+    {
         $sql = 'SELECT  A.*,
                         P.*,
                         U.user_lastname, U.user_firstname
@@ -110,7 +104,7 @@ class Post extends BDDRequest
         return $archives->fetchAll();
     }
 
-    public function getPostId() {
-
+    public function getPostId()
+    {
     }
 }

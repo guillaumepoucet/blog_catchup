@@ -73,10 +73,20 @@ class ControleurPost
 
     public function deletePost($post_id)
     {
-        $delete = $this->post->deletePost($post_id);
-        if ($delete) {
-            $_SESSION['delete'] = 'Ok';
-            header('location:index.php?action=admin&id=postlist');
+        $deleteComments = $this->comment->deleteAllComments($post_id);
+        if($deleteComments)
+        {
+            $deletePost = $this->post->deletePost($post_id);
+            if ($deletePost) {
+                $_SESSION['delete'] = 'Ok';
+                header('location:index.php?action=admin&id=postlist');
+            } else
+            {
+                throw new Exception("L'article n'a pu être supprimé.");
+            }
+        } else 
+        {
+            throw new Exception("Les commentaires attachés à l'article n'ont pu être supprimés.");
         }
     }
 

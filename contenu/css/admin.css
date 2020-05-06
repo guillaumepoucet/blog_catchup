@@ -1,0 +1,180 @@
+/* général */
+.alert {
+    font-weight: bold;
+}
+
+/* post */
+.alert-comment {
+    text-align: center;
+    background-color: #a7b3c645;
+    padding: 25px;
+    border-radius: 4px;
+    border: 1px solid #a7b3c6;
+    font-size: 1.2em;
+}
+
+.archive {
+    color: #9CCC65 !important;
+}
+.archive:hover {
+    color: #67ad17 !important;
+}
+
+/* admin */
+.form .register-form {
+    display: none;
+}
+
+.container:before,
+.container:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.logout-btn {
+    padding: 25px 25px;
+}
+
+.logout-btn img {
+    width: 1.1em;
+}
+
+.login-page button {
+    margin: 5px 0px 10px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.admin-grid h2 {
+    align-self: center;
+}
+
+.admin-aside {
+    border-right: 1px solid #0000001c;
+    grid-column-start: 1;
+    padding: 2em;
+}
+
+.admin-aside>div {
+    margin-bottom: 1.5em;
+    padding-left: 1em;
+}
+
+.admin-aside a {
+    display: block;
+    margin-left: 1em;
+    font-weight: 500;
+}
+
+.profil-photo {
+    grid-column-start: 1;
+    position: relative;
+    text-align: center;
+}
+
+.profil-photo img:first-of-type {
+    border-radius: 50%;
+    /* margin: 0em auto 2em; */
+    transition: 0.3s;
+}
+
+.profil-photo img:nth-of-type(even) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.1s;
+    width: 2em;
+    padding: 50px;
+    box-sizing: content-box;
+    border-radius: 42%;
+    opacity: 0;
+
+}
+
+.profil-photo img:nth-of-type(even):hover {
+    opacity: 1;
+}
+
+.profil-photo:hover {
+    filter: grayscale(0.7);
+}
+
+.content {
+    grid-column-start: 2;
+    padding: 0em 3em 0em;
+}
+
+.thead-dark {
+    background-color: #a7b3c6;
+
+}
+
+.type-badge {
+    border-radius: 8px;
+    border-color: transparent;
+    font-weight: 600;
+    font-size: 0.7em;
+    margin-left: 0.5em;
+    outline-width: 0px;
+    padding-top: 0.2em;
+    transition: 0.2s;
+}
+
+.type-badge:hover {
+    background-color: #a7b3c6;
+    color: white;
+}
+
+.delete-bg {
+    font-size: 0.9em;
+    margin: 0;
+    color: rgb(255, 255, 255);
+    background-color: #f48f8f;
+    border-radius: 4px;
+    padding: 0.4em 0.6em;
+}
+
+.delete-bg:hover {
+    text-decoration: none;
+    background-color: red;
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: #a7b3c657;
+}
+
+.nav-page {
+    text-align: center;
+}
+
+/* Post list */
+table .col-3,
+table .col-4,
+table .col-5 {
+    white-space: nowrap !important;
+}
+
+.archive-btn {
+    background-color: #9CCC65;
+}
+
+.archive-btn:hover {
+    background-color: #67ad17;
+}
+
+.edit {
+    background-color: #42a5f5;
+}
+
+.edit:hover {
+    background-color: #1565c0;
+}
+
+.dt-body-nowrap {
+    white-space: nowrap;
+}

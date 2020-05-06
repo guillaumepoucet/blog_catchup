@@ -1,10 +1,4 @@
-<?php 
-	if (empty($_SESSION)) {
-		session_start(); 
-	}
+<?php
 
-header('Content-type: text/html; charset=utf-8');
-require_once('controleur/Routeur.php');
-
-$routeur = new Routeur;
-$routeur->routeurRequete();
+require_once('controllers/Application.php');
+Application::process();
